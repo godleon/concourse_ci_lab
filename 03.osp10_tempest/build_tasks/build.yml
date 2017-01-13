@@ -13,4 +13,5 @@ run:
   args:
     - -exc
     - |
+      source osp_test_resource/03.osp10_tempest/scripts/env_var.list
       bash osp_test_resource/03.osp10_tempest/scripts/prepare_env.sh

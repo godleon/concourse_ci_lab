@@ -1,5 +1,6 @@
 #!/bin/bash
 
+find /
 source env_var.list
 
 echo "REDHAT_USERNAME=${REDHAT_USERNAME}"

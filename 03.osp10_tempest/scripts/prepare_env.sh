@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo $1
+echo ${1}
 
 echo "REDHAT_USERNAME=${REDHAT_USERNAME}"
 echo "REDHAT_USERPASSWORD=${REDHAT_USERPASSWORD}"

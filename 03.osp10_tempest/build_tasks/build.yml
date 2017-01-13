@@ -13,8 +13,5 @@ run:
   args:
     - -exc
     - |
-      source osp_test_resource/03.osp10_tempest/scripts/env_var.list
-      echo "REDHAT_USERNAME=${REDHAT_USERNAME}"
-      echo "REDHAT_USERPASSWORD=${REDHAT_USERPASSWORD}"
-      echo "OS_AUTH_URL=${OS_AUTH_URL}"
-      bash osp_test_resource/03.osp10_tempest/scripts/prepare_env.sh
+      cd osp_test_resource/03.osp10_tempest/scripts
+      bash prepare_env.sh env_var.list

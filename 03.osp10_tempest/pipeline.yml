@@ -1,0 +1,14 @@
+resources:
+- name: tempest_config
+  type: git
+  source:
+    uri: https://github.com/godleon/concourse_ci_lab
+    branch: master
+
+jobs:
+- name: Run Tempest Test
+  plan:
+  - get: tempest_config
+    trigger: true
+  - task: Run Tempest
+    file: tempest_config/build_tasks/build.yml

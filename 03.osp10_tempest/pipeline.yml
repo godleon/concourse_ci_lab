@@ -1,5 +1,5 @@
 resources:
-- name: tempest_config
+- name: osp_test_resource
   type: git
   source:
     uri: https://github.com/godleon/concourse_ci_lab
@@ -8,7 +8,7 @@ resources:
 jobs:
 - name: Run Tempest Test
   plan:
-  - get: tempest_config
+  - get: osp_test_resource
     trigger: true
   - task: Run Tempest
-    file: tempest_config/03.osp10_tempest/build_tasks/build.yml
+    file: osp_test_resource/03.osp10_tempest/build_tasks/build.yml

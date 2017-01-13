@@ -13,4 +13,5 @@ run:
   args:
     - -exc
     - |
-      find / | grep tempest
+      pwd
+      bash osp_test_resource/03.osp10_tempest/scripts/prepare_env.sh

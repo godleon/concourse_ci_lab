@@ -11,4 +11,4 @@ jobs:
   - get: tempest_config
     trigger: true
   - task: Run Tempest
-    file: tempest_config/build_tasks/build.yml
+    file: tempest_config/03.osp10_tempest/build_tasks/build.yml

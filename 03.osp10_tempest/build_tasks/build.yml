@@ -6,7 +6,7 @@ image_resource:
     repository: registry.access.redhat.com/rhel7.3
 
 inputs:
-- name: tempest_config
+- name: osp_test_resource
 
 run:
   path: sh

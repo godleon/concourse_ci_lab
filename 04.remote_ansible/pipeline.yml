@@ -1,5 +1,5 @@
 resources:
-- name: ci_resource
+- name: concourse_ci_lab
   type: git
   source:
     uri: https://github.com/godleon/concourse_ci_lab
@@ -8,7 +8,7 @@ resources:
 jobs:
 - name: Execute Simple Ansible Task
   plan:
-  - get: ci_resource
+  - get: concourse_ci_lab
     trigger: true
-  - task: Run Tempest
-    file: ci_resource/04.remote_ansible/simple_ping_task.yml
+  - task: Simple Ansible Task
+    file: concourse_ci_lab/04.remote_ansible/simple_ping_task.yml

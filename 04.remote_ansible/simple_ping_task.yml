@@ -7,7 +7,7 @@ image_resource:
     tag: master-centos7
 
 inputs:
-- name: ci_resource
+- name: concourse_ci_lab
 
 run:
   path: sh

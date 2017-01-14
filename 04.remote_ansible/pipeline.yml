@@ -11,4 +11,4 @@ jobs:
   - get: ci_resource
     trigger: true
   - task: Run Tempest
-    file: osp_test_resource/04.remote_ansible/simple_ping_task.yml
+    file: ci_resource/04.remote_ansible/simple_ping_task.yml

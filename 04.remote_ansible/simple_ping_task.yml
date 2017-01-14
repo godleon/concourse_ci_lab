@@ -1,0 +1,25 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: williamyeh/ansible
+    tag: master-centos7
+
+inputs:
+- name: ci_resource
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      pwd
+      whoami
+      find ./
+      mkdir ~/.ssh
+      # cp concourse_ci_lab/ssh-keys/* ~/.ssh/
+      # chmod 400 ~/.ssh/id_rsa
+      # export ANSIBLE_HOST_KEY_CHECKING=False
+      # ansible --version
+      # ansible -i concourse_ci_lab/04.remote_ansible/inventory -m ping -u root all

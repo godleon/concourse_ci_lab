@@ -1,0 +1,14 @@
+resources:
+- name: ci_resource
+  type: git
+  source:
+    uri: https://github.com/godleon/concourse_ci_lab
+    branch: master
+
+jobs:
+- name: Execute Simple Ansible Task
+  plan:
+  - get: ci_resource
+    trigger: true
+  - task: Run Tempest
+    file: osp_test_resource/04.remote_ansible/simple_ping_task.yml

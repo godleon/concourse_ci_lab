@@ -6,22 +6,27 @@ resources:
     branch: master
 
 jobs:
-- name: tempest-test
+- name: tempest-rally-test
   public: true
   plan:
+  
   - get: osp_test_resource
     trigger: true
-  - task: Tempest Test
+  
+  - task: tempest
     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/tempest_test.yml
 
-- name: rally-test
-  public: true
-  plan:
-  - get: osp_test_resource
-    trigger: true
-    passed: [tempest-test]
-      params:
-      bump: minor
-    rc: true
-  - task: Rally Test
+  - task: rally
     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml
+
+# - name: rally-test
+#   public: true
+#   plan:
+#   - get: osp_test_resource
+#     trigger: true
+#     passed: [tempest]
+#       params:
+#       bump: minor
+#     rc: true
+#   - task: rally
+#     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml

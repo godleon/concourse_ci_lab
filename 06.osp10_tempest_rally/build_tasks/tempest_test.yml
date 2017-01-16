@@ -24,6 +24,9 @@ run:
       cd osp_test_resource/06.osp10_tempest_rally/scripts
       bash run_tempest.sh env_var.list
 
+      date
+      sleep 5
+
       # mkdir osp_test_resource/06.osp10_tempest/tempest_output
       # touch osp_test_resource/06.osp10_tempest/tempest_output
        

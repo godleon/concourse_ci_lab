@@ -2,10 +2,12 @@
 
 source ${1}
 
-subscription-manager register --username ${REDHAT_USERNAME} --password ${REDHAT_USERPASSWORD} --autosubscribe
-subscription-manager attach --pool=${REDHAT_REG_POOLID}
-subscription-manager repos --disable=*
-subscription-manager repos --enable=${REDHAT_REPO_ENABLED}
+echo "finished!"
+
+# subscription-manager register --username ${REDHAT_USERNAME} --password ${REDHAT_USERPASSWORD} --autosubscribe
+# subscription-manager attach --pool=${REDHAT_REG_POOLID}
+# subscription-manager repos --disable=*
+# subscription-manager repos --enable=${REDHAT_REPO_ENABLED}
 
 # yum -y install openstack-tempest
 # mkdir /tempest

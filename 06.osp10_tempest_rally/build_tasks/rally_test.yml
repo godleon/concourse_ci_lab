@@ -5,10 +5,9 @@ image_resource:
   source: 
     repository: registry.access.redhat.com/rhel7.3
 
-inputs:
-- name: osp_test_resource
+params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
-output:
+inputs:
 - name: osp_test_resource
 
 run:
@@ -16,5 +15,8 @@ run:
   args:
     - -exc
     - |
-      cd osp_test_resource/06.osp10_tempest/scripts
-      bash run_tempest.sh env_var.list
+      env
+      pwd
+      find .
+
+      

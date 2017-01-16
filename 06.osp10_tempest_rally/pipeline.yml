@@ -11,7 +11,7 @@ jobs:
   - get: osp_test_resource
     trigger: true
   - task: Tempest Test
-    file: osp_test_resource/06.osp10_tempest_rally/build_tasks/run_tempest.yml
+    file: osp_test_resource/06.osp10_tempest_rally/build_tasks/tempest_test.yml
 
 # - name: Run Rally Test
 #   plan:

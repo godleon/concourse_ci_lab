@@ -17,4 +17,4 @@ run:
     - -exc
     - |
       cd osp_test_resource/06.osp10_tempest/scripts
-      bash prepare_env.sh env_var.list
+      bash run_tempest.sh env_var.list

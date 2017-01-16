@@ -18,5 +18,7 @@ run:
       env
       pwd
       find .
+      date
+      sleep 5
 
       

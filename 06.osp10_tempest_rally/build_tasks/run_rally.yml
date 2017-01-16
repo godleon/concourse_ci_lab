@@ -1,0 +1,20 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: registry.access.redhat.com/rhel7.3
+
+inputs:
+- name: osp_test_resource
+
+output:
+- name: osp_test_resource
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      cd osp_test_resource/06.osp10_tempest/scripts
+      bash prepare_env.sh env_var.list

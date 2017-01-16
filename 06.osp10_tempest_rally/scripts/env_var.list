@@ -1,0 +1,9 @@
+REDHAT_USERNAME=LeonTseng1
+REDHAT_USERPASSWORD=!QAZ2wsx
+REDHAT_REG_POOLID=8a85f98158f11a3a0158f265d29e71df
+REDHAT_REPO_ENABLED="rhel-7-server-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-rh-common-rpms --enable=rhel-ha-for-rhel-7-server-rpms --enable=rhel-7-server-openstack-10-rpms"
+
+OS_AUTH_URL=http://10.5.17.106:5000/v2.0
+OS_USERNAME=admin
+OS_PASSWORD=fGAFRq287ZfWXnzdaKmvNXZex
+OS_TENANT_NAME=admin

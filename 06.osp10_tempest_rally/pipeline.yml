@@ -1,0 +1,20 @@
+resources:
+- name: osp_test_resource
+  type: git
+  source:
+    uri: https://github.com/godleon/concourse_ci_lab
+    branch: master
+
+jobs:
+- name: Run Tempest Test
+  plan:
+  - get: osp_test_resource
+    trigger: true
+  - task: Tempest Test
+    file: osp_test_resource/06.osp10_tempest_rally/build_tasks/run_tempest.yml
+
+# - name: Run Rally Test
+#   plan:
+#   - get: osp_test_resource
+#   - task: Rally Test
+#     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/run_rally.yml

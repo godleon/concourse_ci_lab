@@ -16,6 +16,7 @@ run:
   args:
     - -exc
     - |
+      find .
       cd osp_test_resource/06.osp10_tempest/scripts
       bash run_tempest.sh env_var.list
 

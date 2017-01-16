@@ -1,0 +1,24 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: williamyeh/ansible
+    tag: master-centos7
+
+inputs:
+- name: concourse_ci_lab
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      export ANSIBLE_HOST_KEY_CHECKING=False
+
+      mkdir ~/.ssh
+      cp concourse_ci_lab/ssh-keys/* ~/.ssh/
+      chmod 400 ~/.ssh/id_rsa
+      
+      ansible --version
+      ansible -i concourse_ci_lab/04.remote_ansible/inventory -m ping -u root all

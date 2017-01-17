@@ -21,6 +21,5 @@ run:
     - |
       env
       find .
-      cat osp_test_resource/07.slack_notification/slack_message.txt
-
+      export SLACK_RESULT='OK'
        

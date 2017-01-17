@@ -20,6 +20,5 @@ run:
     - -exc
     - |
       env
-      find .
       bash osp_test_resource/07.slack_notification/scripts/do_work.sh
-       
+      

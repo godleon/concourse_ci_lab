@@ -13,7 +13,6 @@ inputs:
 
 output:
 - name: tempest_output
-  path: osp_test_resource/07.slack_notification
 
 run:
   path: sh
@@ -21,5 +20,7 @@ run:
     - -exc
     - |
       env
-      bash osp_test_resource/07.slack_notification/scripts/do_work.sh
+      cd osp_test_resource/07.slack_notification/scripts
+      mkdir tempest_output
+      bash do_work.sh
       

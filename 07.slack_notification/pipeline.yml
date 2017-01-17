@@ -33,7 +33,7 @@ jobs:
     params:
       channel: '#ci_message'
       icon_emoji: ':robot_face:'
-      text_file: osp_test_resource/07.slack_notification/slack_message.txt
+      text_file: tempest_output/slack_message.txt
       text: |
         The build had a result. Check it out at:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME

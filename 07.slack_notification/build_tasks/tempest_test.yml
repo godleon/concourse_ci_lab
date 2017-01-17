@@ -11,8 +11,8 @@ params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 inputs:
 - name: osp_test_resource
 
-# output:
-# - name: osp_test_resource
+output:
+- name: osp_test_resource
 
 run:
   path: sh

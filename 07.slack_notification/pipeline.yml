@@ -12,6 +12,7 @@ resources:
   source:
     uri: https://github.com/godleon/concourse_ci_lab
     branch: master
+
 - name: slack-alert
   type: slack-notification
   source:
@@ -19,19 +20,20 @@ resources:
 
 
 jobs:
-- name: slack_notify
+- name: tempest-test
   public: true
   plan:
-  
   - get: osp_test_resource
     trigger: true
-  
   - task: tempest
     file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
 
   # - task: debug_task
   #   file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
 
+- name: slack-notify
+  public: true
+  plan:
   - get: tempest_output
     trigger: true
   - put: slack-alert

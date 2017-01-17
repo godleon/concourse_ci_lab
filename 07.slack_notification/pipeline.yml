@@ -12,10 +12,10 @@ resources:
   source:
     uri: https://github.com/godleon/concourse_ci_lab
     branch: master
-- name: slack-alert
-  type: slack-notification
-  source:
-    url: https://hooks.slack.com/services/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
+# - name: slack-alert
+#   type: slack-notification
+#   source:
+#     url: https://hooks.slack.com/services/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
 
 
 jobs:

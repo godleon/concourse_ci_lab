@@ -9,9 +9,6 @@ params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
 
 inputs:
-- name: osp_test_resource
-
-outputs:
 - name: tempest_output
 
 run:
@@ -20,6 +17,7 @@ run:
     - -exc
     - |
       env
-      find .
-      echo "Debug Finished!"
+      cd osp_test_resource/07.slack_notification/scripts
+      mkdir tempest_output
+      bash do_work.sh
       

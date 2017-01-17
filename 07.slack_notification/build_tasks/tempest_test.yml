@@ -11,7 +11,7 @@ params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 inputs:
 - name: osp_test_resource
 
-output:
+outputs:
 - name: tempest_output
 
 run:

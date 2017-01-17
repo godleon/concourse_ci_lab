@@ -12,10 +12,10 @@ resources:
   source:
     uri: https://github.com/godleon/concourse_ci_lab
     branch: master
-# - name: slack-alert
-#   type: slack-notification
-#   source:
-#     url: https://hooks.slack.com/services/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
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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
 
 
 jobs:
@@ -29,21 +29,21 @@ jobs:
   - task: tempest
     file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
 
-  - task: debug_task
-    file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
+  # - task: debug_task
+  #   file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
 
-  # - put: slack-alert
-  #   params:
-  #     channel: '#ci_message'
-  #     icon_emoji: ':robot_face:'
-  #     text_file: tempest_output/slack_message.txt
-  #     text: |
-  #       The build had a result. Check it out at:
-  #       http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
-  #       or at: 
-  #       http://10.5.17.254:8080/builds/$BUILD_ID
+  - put: slack-alert
+    params:
+      channel: '#ci_message'
+      icon_emoji: ':robot_face:'
+      text_file: tempest_output/slack_message.txt
+      text: |
+        The build had a result. Check it out at:
+        http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+        or at: 
+        http://10.5.17.254:8080/builds/$BUILD_ID
 
-        #Result: $SLACK_RESULT
+        Result: "Slack Result!"
         
         #$TEXT_FILE_CONTENT
 

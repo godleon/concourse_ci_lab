@@ -1,1 +1,1 @@
-Hello Slack!
+Hello Slack message!

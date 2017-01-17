@@ -31,8 +31,8 @@ jobs:
 
   - put: slack-alert
     params:
-      channel: '#ci_message'
-      icon_emoji: ':ghost:'
+      channel: '@leon'
+      icon_emoji: ':robot_face:'
       text_file: osp_test_resource/07.slack_notification/slack_message.txt
       text: |
         The build had a result. Check it out at:

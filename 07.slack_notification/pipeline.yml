@@ -23,11 +23,11 @@ jobs:
   public: true
   plan:
   
-  # - get: osp_test_resource
-  #   trigger: true
+  - get: osp_test_resource
+    trigger: true
   
-  # - task: tempest
-  #   file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
+  - task: tempest
+    file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
 
   - put: slack-alert
     params:

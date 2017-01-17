@@ -12,7 +12,8 @@ inputs:
 - name: osp_test_resource
 
 output:
-- name: osp_test_resource
+- name: tempest_output
+  path: osp_test_resource/07.slack_notification
 
 run:
   path: sh

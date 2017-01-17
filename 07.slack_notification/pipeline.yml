@@ -12,15 +12,14 @@ resources:
   source:
     uri: https://github.com/godleon/concourse_ci_lab
     branch: master
-
 - name: slack-alert
   type: slack-notification
   source:
-    url: https://hooks.slack.com/services/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
+    url: https://hooks.slack.com/services/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
 
 
 jobs:
-- name: 
+- name: slack_notify
   public: true
   plan:
   
@@ -32,7 +31,7 @@ jobs:
 
   - put: slack-alert
     params:
-      channel: '@leon'
+      channel: '#ci_message'
       text_file: results/message.txt
       text: |
         The build had a result. Check it out at:

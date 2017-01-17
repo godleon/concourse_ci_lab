@@ -40,7 +40,7 @@ jobs:
         or at: 
         http://10.5.17.254:8080/builds/$BUILD_ID
 
-        Result: $SLACK_RESULT
+        #Result: $SLACK_RESULT
         
         #$TEXT_FILE_CONTENT
 

@@ -21,5 +21,5 @@ run:
     - |
       env
       find .
-      export SLACK_RESULT='OK'
+      echo "Hello Slack! ${date}" > osp_test_resource/07.slack_notification/slack_message.txt
        

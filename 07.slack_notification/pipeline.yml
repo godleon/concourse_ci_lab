@@ -23,16 +23,16 @@ jobs:
   public: true
   plan:
   
-  - get: osp_test_resource
-    trigger: true
+  # - get: osp_test_resource
+  #   trigger: true
   
-  - task: tempest
-    file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
+  # - task: tempest
+  #   file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
 
   - put: slack-alert
     params:
       channel: '#ci_message'
-      text_file: results/message.txt
+      text_file: osp_test_resource/07.slack_notification/slack_message.txt
       text: |
         The build had a result. Check it out at:
         http://my.concourse.url/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME

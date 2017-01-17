@@ -1,0 +1,57 @@
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+
+
+resources:
+- name: osp_test_resource
+  type: git
+  source:
+    uri: https://github.com/godleon/concourse_ci_lab
+    branch: master
+
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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
+
+
+jobs:
+- name: 
+  public: true
+  plan:
+  
+  - get: osp_test_resource
+    trigger: true
+  
+  - task: tempest
+    file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
+
+  - put: slack-alert
+    params:
+      channel: '@leon'
+      text_file: results/message.txt
+      text: |
+        The build had a result. Check it out at:
+        http://my.concourse.url/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+        or at: 
+        http://my.concourse.url/builds/$BUILD_ID
+
+        Result: "slack-alert result"
+        
+        #$TEXT_FILE_CONTENT
+
+# - name: rally-test
+#   public: true
+#   plan:
+#   - get: osp_test_resource
+#     trigger: true
+#     passed: [tempest]
+#       params:
+#       bump: minor
+#     rc: true
+#   - task: rally
+#     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml

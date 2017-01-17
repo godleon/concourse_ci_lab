@@ -1,0 +1,32 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: registry.access.redhat.com/rhel7.3
+
+params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
+
+
+inputs:
+- name: osp_test_resource
+
+# output:
+# - name: osp_test_resource
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      env
+      find .
+      cd osp_test_resource/06.osp10_tempest_rally/scripts
+      bash run_tempest.sh env_var.list
+
+      mkdir results
+      echo "this is tempest test result message" > results/message.txt
+
+      # mkdir osp_test_resource/06.osp10_tempest/tempest_output
+      # touch osp_test_resource/06.osp10_tempest/tempest_output
+       

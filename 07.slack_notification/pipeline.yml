@@ -32,6 +32,8 @@ jobs:
   # - task: debug_task
   #   file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
 
+  - get: tempest_output
+    trigger: true
   - put: slack-alert
     params:
       channel: '#ci_message'

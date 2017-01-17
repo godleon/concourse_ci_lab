@@ -21,5 +21,5 @@ run:
     - |
       env
       find .
-      echo 'Hello Slack! ${date}' > osp_test_resource/07.slack_notification/slack_message.txt
+      bash 'Hello Slack! ${date}' > osp_test_resource/07.slack_notification/scripts/do_work.sh
        

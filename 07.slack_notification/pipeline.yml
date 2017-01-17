@@ -31,7 +31,7 @@ jobs:
 
   - put: slack-alert
     params:
-      channel: '@ci_message'
+      channel: '#ci_message'
       icon_emoji: ':robot_face:'
       text_file: osp_test_resource/07.slack_notification/slack_message.txt
       text: |

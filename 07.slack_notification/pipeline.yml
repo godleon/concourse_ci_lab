@@ -26,6 +26,8 @@ jobs:
   - get: osp_test_resource
     trigger: true
   - task: tempest
+    param:
+      BUILD_ID: $BUILD_ID
     file: osp_test_resource/07.slack_notification/build_tasks/tempest_test.yml
   # - put: tempest_output
   # - task: debug_task

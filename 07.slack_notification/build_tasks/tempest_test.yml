@@ -20,6 +20,7 @@ run:
     - |
       env
       cd osp_test_resource/07.slack_notification/scripts
+      echo ${BUILD_ID}
       mkdir tempest_output
       bash do_work.sh
       

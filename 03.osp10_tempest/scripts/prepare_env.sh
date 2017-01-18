@@ -13,5 +13,5 @@ cd /tempest
 sh /usr/share/openstack-tempest-13.0.0/tools/configure-tempest-directory
 tools/config_tempest.py --debug --create identity.uri ${OS_AUTH_URL} identity.admin_username ${OS_USERNAME} identity.admin_password ${OS_PASSWORD} identity.admin_tenant_name ${OS_TENANT_NAME} object-storage.operator_role Member
 python -m tempest.cmd.cleanup --init-saved-state
-python -m tempest.cmd.cleanup
 tools/run-tests.sh | tee ra-out.txt
+python -m tempest.cmd.cleanup

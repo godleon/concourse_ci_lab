@@ -1,9 +1,9 @@
-resource_types:
-- name: slack-notification
-  type: docker-image
-  source:
-    repository: cfcommunity/slack-notification-resource
-    tag: latest
+# resource_types:
+# - name: slack-notification
+#   type: docker-image
+#   source:
+#     repository: cfcommunity/slack-notification-resource
+#     tag: latest
 
 
 resources:
@@ -13,10 +13,10 @@ resources:
     uri: https://github.com/godleon/concourse_ci_lab
     branch: master
 
-- name: slack-alert
-  type: slack-notification
-  source:
-    url: https://hooks.slack.com/services/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
+# - name: slack-alert
+#   type: slack-notification
+#   source:
+#     url: https://hooks.slack.com/services/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
 
 
 jobs:
@@ -52,14 +52,14 @@ jobs:
         
 #         #$TEXT_FILE_CONTENT
 
-- name: rally-test
-  public: true
-  plan:
-  - get: osp_test_resource
-    trigger: true
-    passed: [tempest]
-      params:
-      bump: minor
-    rc: true
-  - task: rally
-    file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml
+# - name: rally-test
+#   public: true
+#   plan:
+#   - get: osp_test_resource
+#     trigger: true
+#     passed: [tempest]
+#       params:
+#       bump: minor
+#     rc: true
+#   - task: rally
+#     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml

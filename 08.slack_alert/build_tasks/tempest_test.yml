@@ -11,8 +11,8 @@ inputs:
 - name: git-resource_osp
 - name: git-resource_semver
 
-# outputs:
-# - name: tempest_output
+outputs:
+- name: tempest_output
 
 run:
   path: sh
@@ -21,9 +21,13 @@ run:
     - |
       find .
       env
+      mkdir $(pwd)/tempest_output
+      touch $(pwd)/tempest_output/slack_message
       export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
       export DIR_VER="$(pwd)/git-resource_semver"
+      export OUT_SLACKMSG="$(pwd)/tempest_output/slack_message"
       source ${DIR_OSP}/env_var.list
       echo ${REDHAT_USERNAME}
-      bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/number ${DIR_VER}/version
-      
+      bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version ${OUT_SLACKMSG}
+      find .
+      cat ${OUT_SLACKMSG}

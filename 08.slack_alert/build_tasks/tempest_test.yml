@@ -21,7 +21,6 @@ run:
     - |
       find .
       env
-      mkdir $(pwd)/tempest_output
       touch $(pwd)/tempest_output/slack_message
       export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
       export DIR_VER="$(pwd)/git-resource_semver"

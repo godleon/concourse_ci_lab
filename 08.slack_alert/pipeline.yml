@@ -58,8 +58,8 @@ jobs:
     params:
       channel: '#ci_message'
       icon_emoji: ':robot_face:'
-      text: The newest version is deployed!
-      # text_file: resource_semver/version
+      # text: The newest version is deployed!
+      text_file: git-resource_semver/version
       # text_file: tempest_output/slack_message.txt
       # text: |
       #   The build had a result. Check it out at:

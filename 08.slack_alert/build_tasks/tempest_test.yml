@@ -1,0 +1,25 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: registry.access.redhat.com/rhel7.3
+
+params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
+
+inputs:
+- name: osp_test_resource
+
+outputs:
+- name: tempest_output
+
+run:
+  path: sh
+  args:
+    - -exc
+    - |
+      env
+      source bash git-resource_osp/08.slack_alert/scripts/env_var.list
+      bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+      env
+      

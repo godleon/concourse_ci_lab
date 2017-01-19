@@ -1,10 +1,10 @@
-# resource_types:
+resource_types:
 
-# - name: slack-notification
-#   type: docker-image
-#   source:
-#     repository: cfcommunity/slack-notification-resource
-#     tag: latest
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
 
 
 resources:
@@ -26,15 +26,15 @@ resources:
     file: version
     private_key: {{git-private-key}}
 
-# - name: slack-resource
-#   type: slack-notification
-#   source:
-#     url: https://hooks.slack.com/services/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
+- name: slack-resource
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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
 
 
 jobs:
 
-- name: Functional Test
+- name: Functional-Test
   public: true
   plan:
   - get: git-resource_osp
@@ -48,26 +48,29 @@ jobs:
 #   - task: debug_task
 #     file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
 
-# - name: slack-notify
-#   public: true
-#   plan:
-#   - get: tempest-test
-#     passed: [tempest-test]
-#     # trigger: true
-#   - put: slack-alert
-#     params:
-#       channel: '#ci_message'
-#       icon_emoji: ':robot_face:'
-#       text_file: tempest_output/slack_message.txt
-#       text: |
-#         The build had a result. Check it out at:
-#         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
-#         or at: 
-#         http://10.5.17.254:8080/builds/$BUILD_ID
+- name: Slack-Notify
+  public: true
+  plan:
+  - get: git-resource_semver
+    trigger: true
+    passed: [Functional-Test]
+  - put: slack-resource
+    params:
+      channel: '#ci_message'
+      icon_emoji: ':robot_face:'
+      text_file: resource_semver/version
+      # text_file: tempest_output/slack_message.txt
+      text: |
+        The build had a result. Check it out at:
+        http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+        or at: 
+        http://10.5.17.254:8080/builds/$BUILD_ID
 
-#         Result: "Slack Result!"
+        Result: "Slack Result!"
         
-#         #$TEXT_FILE_CONTENT
+        #$TEXT_FILE_CONTENT
+  # - put: git-resource_semver
+  # params: {bump: patch, file: resource-version/version}
 
 # - name: rally-test
 #   public: true

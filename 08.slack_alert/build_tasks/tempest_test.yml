@@ -20,7 +20,7 @@ run:
     - |
       env
       find .
-      # source bash git-resource_osp/08.slack_alert/scripts/env_var.list
-      # bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+      source git-resource_osp/08.slack_alert/scripts/env_var.list
+      bash git-resource_osp/08.slack_alert/scripts/tempest.sh
       env
       

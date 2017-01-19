@@ -9,6 +9,7 @@ params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
 inputs:
 - name: git-resource_osp
+- name: git-resource_semver
 
 # outputs:
 # - name: tempest_output
@@ -19,9 +20,9 @@ run:
     - -exc
     - |
       env
-      find .
-      cd git-resource_osp/08.slack_alert/scripts
-      source $(pwd)/env_var.list
+      export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
+      export DIR_VER="$(pwd)/resource_semver"
+      source ${DIR_OSP}/env_var.list
       echo ${REDHAT_USERNAME}
-      bash $(pwd)/tempest.sh $(pwd)/env_var.list
+      bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version
       

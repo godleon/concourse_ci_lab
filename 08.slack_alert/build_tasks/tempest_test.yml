@@ -19,6 +19,7 @@ run:
     - -exc
     - |
       env
+      find .
       cd git-resource_osp/08.slack_alert/scripts
       source $(pwd)/env_var.list
       echo ${REDHAT_USERNAME}

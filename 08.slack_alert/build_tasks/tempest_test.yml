@@ -20,5 +20,5 @@ run:
     - |
       env
       cd git-resource_osp/08.slack_alert/scripts
-      bash git-resource_osp/08.slack_alert/scripts/tempest.sh env_var.list
+      bash tempest.sh env_var.list
       

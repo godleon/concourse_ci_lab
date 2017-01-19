@@ -7,8 +7,8 @@ image_resource:
 
 params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
-inputs:
-- name: git-resource_osp
+# inputs:
+# - name: git-resource_osp
 
 # outputs:
 # - name: tempest_output
@@ -19,7 +19,7 @@ run:
     - -exc
     - |
       env
-      source bash git-resource_osp/08.slack_alert/scripts/env_var.list
-      bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+      # source bash git-resource_osp/08.slack_alert/scripts/env_var.list
+      # bash git-resource_osp/08.slack_alert/scripts/tempest.sh
       env
       

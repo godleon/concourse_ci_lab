@@ -19,9 +19,10 @@ run:
   args:
     - -exc
     - |
+      find .
       env
       export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
-      export DIR_VER="$(pwd)/resource_semver"
+      export DIR_VER="$(pwd)/git-resource_semver"
       source ${DIR_OSP}/env_var.list
       echo ${REDHAT_USERNAME}
       bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version

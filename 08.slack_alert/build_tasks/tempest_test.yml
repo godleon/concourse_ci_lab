@@ -19,7 +19,6 @@ run:
     - -exc
     - |
       env
-      source git-resource_osp/08.slack_alert/scripts/env_var.list
-      env
-      bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+      cd git-resource_osp/08.slack_alert/scripts
+      bash git-resource_osp/08.slack_alert/scripts/tempest.sh env_var.list
       

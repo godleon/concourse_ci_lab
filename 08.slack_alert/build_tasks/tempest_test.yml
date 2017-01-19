@@ -19,9 +19,9 @@ run:
     - -exc
     - |
       env
-      cd git-resource_osp/08.slack_alert/scripts
-      find .
-      source env_var.list
+      #cd git-resource_osp/08.slack_alert/scripts
+      #find .
+      source git-resource_osp/08.slack_alert/scripts/env_var.list
       echo ${REDHAT_USERNAME}
       bash tempest.sh env_var.list
       

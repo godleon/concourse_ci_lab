@@ -8,10 +8,10 @@ image_resource:
 params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
 inputs:
-- name: osp_test_resource
+- name: git-resource_osp
 
-outputs:
-- name: tempest_output
+# outputs:
+# - name: tempest_output
 
 run:
   path: sh

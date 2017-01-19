@@ -31,4 +31,3 @@ run:
       bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version ${OUT_SLACKMSG}
       find .
       cat ${OUT_SLACKMSG}
-      cat ${OUT_SLACKMSG}

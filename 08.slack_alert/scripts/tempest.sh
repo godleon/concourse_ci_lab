@@ -13,7 +13,8 @@ echo "Finished!"
 git clone git-resource_test-result tempest_output
 cat git-resource_semver/version
 mkdir tempest_output/$(cat git-resource_semver/version)
-cp git-resource_osp/08.slack_alert/scripts/tempest_output.html tempest_output/$(cat git-resource_semver/version)/tempest.html
+cp git-resource_osp/08.slack_alert/scripts/tempest.html tempest_output/$(cat git-resource_semver/version)/
+cp git-resource_osp/08.slack_alert/scripts/tempest.xz tempest_output/$(cat git-resource_semver/version)/
 
 cd tempest_output
 git config --global user.email "nobody@concourse.ci"

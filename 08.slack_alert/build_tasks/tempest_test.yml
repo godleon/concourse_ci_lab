@@ -15,14 +15,15 @@ inputs:
 outputs:
 - name: tempest_output
 
-run:
-  path: git-resource_osp/08.slack_alert/scripts/tempest.sh
-
 # run:
-#   path: sh
-#   args:
-#     - -exc
-#     - |
+#   path: git-resource_osp/08.slack_alert/scripts/tempest.sh
+
+run:
+  path: sh
+  args:
+    - -exc
+    - | 
+        bash git-resource_osp/08.slack_alert/scripts/tempest.sh
 #       find .
 #       env
 #       touch $(pwd)/tempest_output/slack_message

@@ -84,8 +84,8 @@ jobs:
       #   Result: "Slack Result!"
         
         #$TEXT_FILE_CONTENT
-  # - put: git-resource_semver
-  # params: {bump: patch, file: resource-version/version}
+  - put: git-resource_semver
+    params: {bump: patch, file: git-resource_semver/version}
 
 # - name: rally-test
 #   public: true
@@ -99,22 +99,22 @@ jobs:
 #   - task: rally
 #     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml
 
-- name: Increasing-Version-Number
-  plan:
-  - get: git-resource_semver
-    trigger: true
-    params: {bump: patch}
-    passed: [Slack-Notify]
-  - put: git-resource_semver
-    params: {bump: patch, file: git-resource_semver/version}
-  - task: display-version
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source: {repository: busybox}
-      inputs:
-      - name: git-resource_semver
-      run:
-        path: cat
-        args: [git-resource_semver/version]
+# - name: Increasing-Version-Number
+#   plan:
+#   - get: git-resource_semver
+#     trigger: true
+#     params: {bump: patch}
+#     passed: [Slack-Notify]
+#   - put: git-resource_semver
+#     params: {bump: patch, file: git-resource_semver/version}
+#   - task: display-version
+#     config:
+#       platform: linux
+#       image_resource:
+#         type: docker-image
+#         source: {repository: busybox}
+#       inputs:
+#       - name: git-resource_semver
+#       run:
+#         path: cat
+#         args: [git-resource_semver/version]

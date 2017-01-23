@@ -64,6 +64,7 @@ jobs:
   plan:
   - get: git-resource_semver
     trigger: true
+    params: {bump: patch}
     passed: [Functional-Test]
   - put: slack-resource
     params:

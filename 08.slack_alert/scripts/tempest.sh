@@ -12,7 +12,6 @@ echo "Finished!"
 
 git clone git-resource_test-result tempest_output
 cat git-resource_semver/version
-rm -rf tempest_output/$(cat git-resource_semver/version)
 mkdir -p tempest_output/$(cat git-resource_semver/version)
 cp git-resource_osp/08.slack_alert/scripts/tempest.html tempest_output/$(cat git-resource_semver/version)/
 cp git-resource_osp/08.slack_alert/scripts/tempest.xz tempest_output/$(cat git-resource_semver/version)/

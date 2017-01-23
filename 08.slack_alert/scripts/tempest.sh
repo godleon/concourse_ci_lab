@@ -4,8 +4,10 @@ set -e # fail fast
 set -x # print commands
 
 echo "================ in shell script ================"
+env
 find .
 echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
+echo "MyParam = ${MyParam}"
 echo "Finished!"
 
 git clone git-resource_test-result tempest_output

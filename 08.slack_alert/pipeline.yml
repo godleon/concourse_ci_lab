@@ -51,9 +51,10 @@ jobs:
     params: {bump: patch}
   - get: git-resource_test-result
   - task: tempest-test
+    params: { 'MyParam': 'MyValue!' }
     file: git-resource_osp/08.slack_alert/build_tasks/tempest_test.yml
-  - put: tempest_output
-    params: {repository: git-resource_test-result}
+  - put: git-resource_test-result
+    params: {repository: tempest_output}
 #   - put: tempest_output
 #   - task: debug_task
 #     file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml

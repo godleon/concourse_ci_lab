@@ -49,6 +49,7 @@ jobs:
   - get: git-resource_semver
     trigger: true
     params: {bump: patch}
+  - get: git-resource_test-result
   - task: tempest-test
     file: git-resource_osp/08.slack_alert/build_tasks/tempest_test.yml
   - put: git-resource_test-result

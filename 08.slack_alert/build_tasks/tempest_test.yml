@@ -10,23 +10,29 @@ params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 inputs:
 - name: git-resource_osp
 - name: git-resource_semver
+- name: git-resource_test-result
 
 outputs:
 - name: tempest_output
 
 run:
-  path: sh
-  args:
-    - -exc
-    - |
-      find .
-      env
-      touch $(pwd)/tempest_output/slack_message
-      export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
-      export DIR_VER="$(pwd)/git-resource_semver"
-      export OUT_SLACKMSG="$(pwd)/tempest_output/slack_message"
-      source ${DIR_OSP}/env_var.list
-      echo ${REDHAT_USERNAME}
-      bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version ${OUT_SLACKMSG}
-      find .
-      cat ${OUT_SLACKMSG}
+  path: git-resource_osp/08.slack_alert/scripts/tempest.sh
+
+# run:
+#   path: sh
+#   args:
+#     - -exc
+#     - |
+#       find .
+#       env
+#       touch $(pwd)/tempest_output/slack_message
+#       export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
+#       export DIR_VER="$(pwd)/git-resource_semver"
+#       export OUT_SLACKMSG="$(pwd)/tempest_output/slack_message"
+#       source ${DIR_OSP}/env_var.list
+#       echo ${REDHAT_USERNAME}
+#       bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version ${OUT_SLACKMSG}
+      
+#       tar Jcvf $(pwd)/tempest_output/tempest.xz ra-out.txt tempest.log tempest.xml
+
+#       cat ${OUT_SLACKMSG}

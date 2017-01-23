@@ -52,7 +52,10 @@ jobs:
   - task: tempest-test
     file: git-resource_osp/08.slack_alert/build_tasks/tempest_test.yml
     params:
-      MyParam: MyValue
+      REDHAT_USERNAME: {{REDHAT_USERNAME}}
+      REDHAT-USER_PWD: {{REDHAT-USER_PWD}}
+      REDHAT-REG_POOLID: {{REDHAT-REG_POOLID}}
+      REDHAT-REPO_ENABLED: {{REDHAT-REPO_ENABLED}}
   - put: git-resource_test-result
     params: {repository: tempest_output}
 #   - put: tempest_output

@@ -78,6 +78,8 @@ jobs:
       # text_file: tempest_output/slack_message.txt
       text: |
         Tempest Result Link: https://godleon.github.io/osp_test_results/$(cat git-resource_semver/version)/tempest.html
+        You can also download the compressed Tempest detail logs at:
+        https://github.com/godleon/osp_test_results/raw/gh-pages/$(cat git-resource_semver/version)/tempest.xz
 
         The build had a result. Check it out at:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME

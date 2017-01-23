@@ -52,8 +52,8 @@ jobs:
   - get: git-resource_test-result
   - task: tempest-test
     file: git-resource_osp/08.slack_alert/build_tasks/tempest_test.yml
-  - put: git-resource_test-result
-    params: {repository: osp_test_results}
+  - put: tempest_output
+    params: {repository: git-resource_test-result}
 #   - put: tempest_output
 #   - task: debug_task
 #     file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
@@ -72,12 +72,13 @@ jobs:
       # text_file: git-resource_semver/version
       # text_file: tempest_output/slack_message.txt
       text: |
-        Tempest Result Link: https://godleon.github.io/osp_test_results/$(cat git-resource_semver/version)/tempest_output.html
+        Tempest Result Link: https://godleon.github.io/osp_test_results/$(cat git-resource_semver/version)/tempest.html
 
         The build had a result. Check it out at:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
         or at: 
         http://10.5.17.254:8080/builds/$BUILD_ID
+
 
       #   Result: "Slack Result!"
         
@@ -96,3 +97,23 @@ jobs:
 #     rc: true
 #   - task: rally
 #     file: osp_test_resource/06.osp10_tempest_rally/build_tasks/rally_test.yml
+
+- name: Increasing-Version-Number
+  plan:
+  - get: git-resource_semver
+    trigger: true
+    params: {bump: patch}
+    passed: [Slack-Notify]
+  - put: git-resource_semver
+    params: {bump: patch, file: git-resource_semver/version}
+  - task: display-version
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: busybox}
+      inputs:
+      - name: git-resource_semver
+      run:
+        path: cat
+        args: [git-resource_semver/version]

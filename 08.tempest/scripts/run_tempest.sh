@@ -3,24 +3,24 @@
 set -e # fail fast
 set -x # print commands
 
-echo "================ in shell script ================"
+echo "================ in shell script (run_tempest.sh) ================"
 env
 find .
 echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 echo "REDHAT-USER_NAME = ${REDHAT-USER_NAME}"
 echo "Finished!"
 
-git clone git-resource_test-result tempest_output
+git clone git-resource_build tempest_output
 cat git-resource_semver/version
 mkdir -p tempest_output/$(cat git-resource_semver/version)
-cp git-resource_osp/08.slack_alert/scripts/tempest.html tempest_output/$(cat git-resource_semver/version)/
-cp git-resource_osp/08.slack_alert/scripts/tempest.xz tempest_output/$(cat git-resource_semver/version)/
+cp git-resource_osp/08.tempest/raw_logs/ra-out.txt tempest_output/$(cat git-resource_semver/version)/
+#cp git-resource_osp/08.tempest/scripts/tempest.xz tempest_output/$(cat git-resource_semver/version)/
 
 cd tempest_output
 git config --global user.email "nobody@concourse.ci"
 git config --global user.name "Concourse"
 git add .
-git commit -m "Tempest output"
+git commit -m "Tempest output version $(cat git-resource_semver/version)"
 
 # echo "OS_AUTH_URL = ${OS_AUTH_URL}"
 # source $1

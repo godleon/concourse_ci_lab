@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QCT Tempest Test Results</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+  <script>
+      $( function() {
+          $("#tabs").tabs({
+              heightStyle: "content"
+          });
+        
+          $(".accordion").accordion({
+              collapsible: true,
+              active: false,
+              heightStyle: "content", 
+              header: "h6"
+          });
+        } );
+  </script>
+</head>
+<body>
+ 
+<h1>QCT Red Hat OSP 10 Tempest Test Results</h1>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-summary">Summary</a></li>
+    <li><a href="#tabs-function-passed">Function Passed ({{ func_passed_tests | length }})</a></li>
+    <li><a href="#tabs-function-failed">Function Failed ({{ func_failed_tests| length }})</a></li>
+    <li><a href="#tabs-function-skipped">Function Skipped ({{ func_skipped_tests| length }})</a></li>
+    <li><a href="#tabs-scenario-passed">Scenario Passed ({{ scen_passed_tests| length }})</a></li>
+    <li><a href="#tabs-scenario-failed">Scenario Failed ({{ scen_failed_tests | length }})</a></li>
+    <li><a href="#tabs-scenario-skipped">Scenario Skipped ({{ scen_skipped_tests | length }})</a></li>
+  </ul>
+
+  <div id="tabs-summary">
+      <pre style="font-size: 14pt">
+{% for data in buf_summary %}
+{{ data }}{% endfor %}
+      </pre>
+  </div>
+
+  <div id="tabs-function-passed">
+      <div class="accordion">
+          <ol type="1" style="font-size: 16px">
+{% for key, value in func_passed_tests.items() %}
+    <li>{{ key }} .... [<b style="color:red">{{ value }}</b>]</li>
+{% endfor %}
+          </ol>
+      </div>
+  </div>
+
+  <div id="tabs-function-failed">
+      <div class="accordion">
+{% for key, value in func_failed_tests.items() %}
+    <h6 style="font-size: 16px">{{ key }}</h6>
+    <div>
+<pre>
+    {% for data in value %}{{ data }}{% endfor %}
+</pre>
+    </div>
+{% endfor %}
+    </div>
+  </div>
+
+  <div id="tabs-function-skipped">
+      <div class="accordion">
+{% for key, value in func_skipped_tests.items() %}
+    <h6 style="font-size: 16px">{{ key }}</h6>
+    <div>
+      <b style="color: red">[REASON]</b> {{ value }}
+    </div>
+{% endfor %}
+          
+  </div>
+</div>
+
+  <div id="tabs-scenario-passed">
+      <div class="accordion">
+          <ol type="1" style="font-size: 16px">
+{% for key, value in scen_passed_tests.items() %}
+    <li>{{ key }} .... [<b style="color:red">{{ value }}</b>]</li>
+{% endfor %}
+          </ol>
+      </div>
+  </div>
+
+  <div id="tabs-scenario-failed">
+      <div class="accordion">
+
+{% for key, value in scen_failed_tests.items() %}
+    <h6 style="font-size: 16px">{{ key }}</h6>
+    <div>
+<pre>
+    {% for data in value %}{{ data }}{% endfor %}
+</pre>
+    </div>
+{% endfor %}
+    
+      </div>
+  </div>
+
+  <div id="tabs-scenario-skipped">
+      <div class="accordion">
+{% for key, value in scen_skipped_tests.items() %}
+    <h6 style="font-size: 16px">{{ key }}</h6>
+    <div>
+      <b style="color: red">[REASON]</b> {{ value }}
+    </div>
+{% endfor %}
+      </div>
+  </div>
+</div>
+ 
+ 
+</body>
+</html>

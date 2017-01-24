@@ -1,5 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
      "editor.fontSize": 18,
-      "editor.fontFamily": " 'Courier New'"
+      "editor.fontFamily": " 'Courier New'",
+      "editor.wordWrap": true
 }

@@ -23,6 +23,13 @@ resources:
     branch: gh-pages
     private_key: {{git-private-key}}
 
+- name: git-resource_build
+  type: git
+  source:
+    uri: {{git-uri_test-result}}
+    branch: build
+    private_key: {{git-private-key}}
+
 - name: git-resource_semver
   type: semver
   source:
@@ -48,19 +55,31 @@ jobs:
     trigger: true
   - get: git-resource_semver
     params: {bump: patch}
-  - get: git-resource_test-result
+  - get: git-resource_build
   - task: tempest-test
-    file: git-resource_osp/08.slack_alert/build_tasks/tempest_test.yml
+    file: git-resource_osp/08.tempest/build_tasks/tempest_test.yml
     params:
       REDHAT-USER_NAME: {{REDHAT-USER_NAME}}
       REDHAT-USER_PWD: {{REDHAT-USER_PWD}}
       REDHAT-REG_POOLID: {{REDHAT-REG_POOLID}}
       REDHAT-REPO_ENABLED: {{REDHAT-REPO_ENABLED}}
-  - put: git-resource_test-result
+  - put: git-resource_build
     params: {repository: tempest_output}
-#   - put: tempest_output
-#   - task: debug_task
-#     file: osp_test_resource/07.slack_notification/build_tasks/debug_task.yml
+
+- name: Build-Plane
+  public: true
+  plan:
+  - get: git-resource_osp
+  - get: git-resource_semver
+    params: {bump: patch}
+  - get: git-resource_build
+    trigger: true
+    passed: [Functional-Test]
+  - get: git-resource_test-result
+  - task: parse-tempest-logs
+    file: git-resource_osp/08.tempest/build_tasks/build_plane.yml
+  - put: git-resource_test-result
+    params: {repository: tempest_parsed_result}
 
 - name: Slack-Notify
   public: true
@@ -68,7 +87,7 @@ jobs:
   - get: git-resource_semver
     trigger: true
     params: {bump: patch}
-    passed: [Functional-Test]
+    passed: [Functional-Test, Build-Plane]
   - put: slack-resource
     params:
       channel: '#ci_message'
@@ -79,7 +98,7 @@ jobs:
       text: |
         Tempest Result Link: https://godleon.github.io/osp_test_results/$(cat git-resource_semver/version)/tempest.html
         You can also download the compressed Tempest detail logs at:
-        https://github.com/godleon/osp_test_results/raw/gh-pages/$(cat git-resource_semver/version)/tempest.xz
+        https://github.com/godleon/osp_test_results/raw/gh-pages/$(cat git-resource_semver/version)/ra-out.txt
 
         The build had a result. Check it out at:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME

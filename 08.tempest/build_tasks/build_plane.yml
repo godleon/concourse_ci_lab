@@ -1,0 +1,19 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: ubuntu
+    tag: 'xenial'
+
+inputs:
+- name: git-resource_osp
+- name: git-resource_semver
+- name: git-resource_build
+- name: git-resource_test-result
+
+outputs:
+- name: tempest_parsed_result
+
+run:
+  path: git-resource_osp/08.slack_alert/scripts/parse_tempest_logs.sh

@@ -3,31 +3,29 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ubuntu
-    tag: 'xenial'
-    # repository: registry.access.redhat.com/rhel7.3
+    repository: registry.access.redhat.com/rhel7.3
 
 params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
 
 inputs:
 - name: git-resource_osp
 - name: git-resource_semver
-- name: git-resource_test-result
+- name: git-resource_build
 
 outputs:
 - name: tempest_output
 
-# run:
-#   path: git-resource_osp/08.slack_alert/scripts/tempest.sh
-
 run:
-  path: sh
-  args:
-    - -exc
-    - | 
-        apt-get update
-        apt-get -y install git
-        bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+  path: git-resource_osp/08.slack_alert/scripts/run_tempest.sh
+
+# run:
+#   path: sh
+#   args:
+#     - -exc
+#     - | 
+#         apt-get update
+#         apt-get -y install git
+#         bash git-resource_osp/08.slack_alert/scripts/tempest.sh
 #       find .
 #       env
 #       touch $(pwd)/tempest_output/slack_message

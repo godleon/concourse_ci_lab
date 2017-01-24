@@ -13,7 +13,6 @@ subscription-manager repos --disable=*
 subscription-manager repos ${REDHAT_REPO_ENABLED}
 
 env
-find .
 echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 echo "REDHAT_USER_NAME = ${REDHAT_USER_NAME}"
 
@@ -27,7 +26,7 @@ if [ -d tempest_output/${RESOURCE_VER} ]; then
     cd tempest_output
     git config --global user.email "nobody@concourse.ci"
     git config --global user.name "Concourse"
-    git add .
+    git add -A
     git commit -m "Clean garbage file version ${RESOURCE_VER}"
     cd -
 fi

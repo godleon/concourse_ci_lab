@@ -16,7 +16,7 @@ outputs:
 - name: tempest_output
 
 run:
-  path: git-resource_osp/08.slack_alert/scripts/run_tempest.sh
+  path: git-resource_osp/08.tempest/scripts/run_tempest.sh
 
 # run:
 #   path: sh
@@ -25,11 +25,11 @@ run:
 #     - | 
 #         apt-get update
 #         apt-get -y install git
-#         bash git-resource_osp/08.slack_alert/scripts/tempest.sh
+#         bash git-resource_osp/08.tempest/scripts/tempest.sh
 #       find .
 #       env
 #       touch $(pwd)/tempest_output/slack_message
-#       export DIR_OSP="$(pwd)/git-resource_osp/08.slack_alert/scripts"
+#       export DIR_OSP="$(pwd)/git-resource_osp/08.tempest/scripts"
 #       export DIR_VER="$(pwd)/git-resource_semver"
 #       export OUT_SLACKMSG="$(pwd)/tempest_output/slack_message"
 #       source ${DIR_OSP}/env_var.list

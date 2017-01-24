@@ -16,4 +16,4 @@ outputs:
 - name: tempest_parsed_result
 
 run:
-  path: git-resource_osp/08.slack_alert/scripts/parse_tempest_logs.sh
+  path: git-resource_osp/08.tempest/scripts/parse_tempest_logs.sh

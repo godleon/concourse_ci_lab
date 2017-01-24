@@ -64,6 +64,10 @@ jobs:
       REDHAT_USER_PWD: {{REDHAT_USER_PWD}}
       REDHAT_REG_POOLID: {{REDHAT_REG_POOLID}}
       REDHAT_REPO_ENABLED: {{REDHAT_REPO_ENABLED}}
+      OS_AUTH_URL: {{OS_AUTH_URL}}
+      OS_USERNAME: {{OS_USERNAME}}
+      OS_PASSWORD: {{OS_PASSWORD}}
+      OS_TENANT_NAME: {{OS_TENANT_NAME}}
   - put: git-resource_build
     params: {repository: tempest_output}
 

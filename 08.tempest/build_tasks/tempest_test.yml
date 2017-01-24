@@ -15,25 +15,3 @@ outputs:
 
 run:
   path: git-resource_osp/08.tempest/scripts/run_tempest.sh
-
-# run:
-#   path: sh
-#   args:
-#     - -exc
-#     - | 
-#         apt-get update
-#         apt-get -y install git
-#         bash git-resource_osp/08.tempest/scripts/tempest.sh
-#       find .
-#       env
-#       touch $(pwd)/tempest_output/slack_message
-#       export DIR_OSP="$(pwd)/git-resource_osp/08.tempest/scripts"
-#       export DIR_VER="$(pwd)/git-resource_semver"
-#       export OUT_SLACKMSG="$(pwd)/tempest_output/slack_message"
-#       source ${DIR_OSP}/env_var.list
-#       echo ${REDHAT_USERNAME}
-#       bash ${DIR_OSP}/tempest.sh ${DIR_OSP}/env_var.list ${DIR_VER}/version ${OUT_SLACKMSG}
-      
-#       tar Jcvf $(pwd)/tempest_output/tempest.xz ra-out.txt tempest.log tempest.xml
-
-#       cat ${OUT_SLACKMSG}

@@ -20,7 +20,16 @@ echo "REDHAT_USER_NAME = ${REDHAT_USER_NAME}"
 yum -y install git
 git clone git-resource_build tempest_output
 cat git-resource_semver/version
-mkdir -p tempest_output/$(cat git-resource_semver/version)
+
+if [ -d tempest_output/${RESOURCE_VER} ]; then
+    rm -rf tempest_output/${RESOURCE_VER}
+    git config --global user.email "nobody@concourse.ci"
+    git config --global user.name "Concourse"
+    git add .
+    git commit -m "Clean garbage file version ${RESOURCE_VER}"
+fi
+
+mkdir -p tempest_output/${RESOURCE_VER}
 cp git-resource_osp/08.tempest/raw_logs/ra-out.txt tempest_output/${RESOURCE_VER}/
 #cp git-resource_osp/08.tempest/scripts/tempest.xz tempest_output/$(cat git-resource_semver/version)/
 

@@ -23,6 +23,7 @@ cat git-resource_semver/version
 
 if [ -d tempest_output/${RESOURCE_VER} ]; then
     rm -rf tempest_output/${RESOURCE_VER}
+    cd tempest_output
     git config --global user.email "nobody@concourse.ci"
     git config --global user.name "Concourse"
     git add .

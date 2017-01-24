@@ -107,11 +107,6 @@ jobs:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
         or at: 
         http://10.5.17.254:8080/builds/$BUILD_ID
-
-
-      #   Result: "Slack Result!"
-        
-        #$TEXT_FILE_CONTENT
   - put: git-resource_semver
     params: {bump: patch, file: git-resource_semver/version}
 

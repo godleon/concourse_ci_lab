@@ -16,8 +16,7 @@ echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 echo "REDHAT-USER_NAME = ${REDHAT-USER_NAME}"
 echo "Finished!"
 
-
-
+yum -y install git
 git clone git-resource_build tempest_output
 cat git-resource_semver/version
 mkdir -p tempest_output/$(cat git-resource_semver/version)

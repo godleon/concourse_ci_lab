@@ -10,7 +10,7 @@ RESOURCE_VER=$(cat git-resource_semver/version)
 subscription-manager register --username ${REDHAT_USER_NAME} --password ${REDHAT_USER_PWD} --autosubscribe
 subscription-manager attach --pool=${REDHAT_REG_POOLID}
 subscription-manager repos --disable=*
-subscription-manager repos --enable=${REDHAT_REPO_ENABLED}
+subscription-manager repos ${REDHAT_REPO_ENABLED}
 
 env
 find .
@@ -20,6 +20,7 @@ echo "REDHAT_USER_NAME = ${REDHAT_USER_NAME}"
 yum -y install git
 git clone git-resource_build tempest_output
 cat git-resource_semver/version
+find .
 
 if [ -d tempest_output/${RESOURCE_VER} ]; then
     rm -rf tempest_output/${RESOURCE_VER}
@@ -28,6 +29,7 @@ if [ -d tempest_output/${RESOURCE_VER} ]; then
     git config --global user.name "Concourse"
     git add .
     git commit -m "Clean garbage file version ${RESOURCE_VER}"
+    cd -
 fi
 
 mkdir -p tempest_output/${RESOURCE_VER}

@@ -22,7 +22,7 @@ git clone git-resource_test-result tempest_parsed_result
 
 if [ -d tempest_parsed_result/${RESOURCE_VER} ]; then
     rm -rf tempest_parsed_result/${RESOURCE_VER}
-    cd tempest_output
+    cd tempest_parsed_result
     git config --global user.email "nobody@concourse.ci"
     git config --global user.name "Concourse"
     git add -A

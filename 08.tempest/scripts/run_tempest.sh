@@ -13,7 +13,7 @@ echo "================ in shell script (run_tempest.sh) ================"
 env
 find .
 echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
-echo "REDHAT-USER_NAME = ${REDHAT-USER_NAME}"
+echo "REDHAT_USER_NAME = ${REDHAT_USER_NAME}"
 echo "Finished!"
 
 

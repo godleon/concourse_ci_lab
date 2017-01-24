@@ -59,10 +59,11 @@ jobs:
   - task: tempest-test
     file: git-resource_osp/08.tempest/build_tasks/tempest_test.yml
     params:
-      REDHAT-USER_NAME: {{REDHAT-USER_NAME}}
-      REDHAT-USER_PWD: {{REDHAT-USER_PWD}}
-      REDHAT-REG_POOLID: {{REDHAT-REG_POOLID}}
-      REDHAT-REPO_ENABLED: {{REDHAT-REPO_ENABLED}}
+      ANSIBLE_HOST_KEY_CHECKING: 'false'
+      REDHAT_USER_NAME: {{REDHAT_USER_NAME}}
+      REDHAT_USER_PWD: {{REDHAT_USER_PWD}}
+      REDHAT_REG_POOLID: {{REDHAT_REG_POOLID}}
+      REDHAT_REPO_ENABLED: {{REDHAT_REPO_ENABLED}}
   - put: git-resource_build
     params: {repository: tempest_output}
 

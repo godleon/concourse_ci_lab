@@ -5,7 +5,12 @@ image_resource:
   source:
     repository: registry.access.redhat.com/rhel7.3
 
-params: { 'ANSIBLE_HOST_KEY_CHECKING': 'False' }
+params: 
+  ANSIBLE_HOST_KEY_CHECKING: 'False'
+  REDHAT-USER_NAME: {{REDHAT-USER_NAME}}
+  REDHAT-USER_PWD: {{REDHAT-USER_PWD}}
+  REDHAT-REG_POOLID: {{REDHAT-REG_POOLID}}
+  REDHAT-REPO_ENABLED: {{REDHAT-REPO_ENABLED}}
 
 inputs:
 - name: git-resource_osp

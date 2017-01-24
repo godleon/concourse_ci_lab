@@ -4,11 +4,19 @@ set -e # fail fast
 set -x # print commands
 
 echo "================ in shell script (run_tempest.sh) ================"
+
+subscription-manager register --username ${REDHAT-USER_NAME} --password ${REDHAT-USER_PWD} --autosubscribe
+subscription-manager attach --pool=${REDHAT-REG_POOLID}
+subscription-manager repos --disable=*
+subscription-manager repos --enable=${REDHAT-REPO_ENABLED}
+
 env
 find .
 echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 echo "REDHAT-USER_NAME = ${REDHAT-USER_NAME}"
 echo "Finished!"
+
+
 
 git clone git-resource_build tempest_output
 cat git-resource_semver/version

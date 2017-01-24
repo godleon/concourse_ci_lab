@@ -14,6 +14,7 @@ inputs:
 
 outputs:
 - name: tempest_parsed_result
+- name: git-resource_build_clean
 
 run:
   path: git-resource_osp/08.tempest/scripts/parse_tempest_logs.sh

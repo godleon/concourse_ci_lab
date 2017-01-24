@@ -81,6 +81,8 @@ jobs:
     file: git-resource_osp/08.tempest/build_tasks/build_plane.yml
   - put: git-resource_test-result
     params: {repository: tempest_parsed_result}
+  - put: git-resource_build
+    params: {repository: git-resource_build_clean}
 
 - name: Slack-Notify
   public: true

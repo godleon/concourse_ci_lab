@@ -16,6 +16,7 @@ apt-get -y install git python3 python3-jinja2
 cp git-resource_osp/08.tempest/scripts/{template.html,tempest_parser.py} ./
 cp git-resource_build/${RESOURCE_VER}/ra-out.txt ./
 python3 tempest_parser.py
+mv tempest_output.html tempest.html
 
 git clone git-resource_test-result tempest_parsed_result
 
@@ -30,7 +31,7 @@ if [ -d tempest_parsed_result/${RESOURCE_VER} ]; then
 fi
 
 mkdir -p tempest_parsed_result/${RESOURCE_VER}
-cp tempest_output.html ra-out.txt tempest_parsed_result/${RESOURCE_VER}/
+cp tempest.html ra-out.txt tempest_parsed_result/${RESOURCE_VER}/
 cd tempest_parsed_result
 git config --global user.email "nobody@concourse.ci"
 git config --global user.name "Concourse"

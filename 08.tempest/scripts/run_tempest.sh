@@ -26,7 +26,7 @@ tools/run-tests.sh | tee ra-out.txt
 python -m tempest.cmd.cleanup
 cd -
 
-#env
+env
 #echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 
 git clone git-resource_build tempest_output

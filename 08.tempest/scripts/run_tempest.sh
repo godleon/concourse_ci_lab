@@ -18,12 +18,15 @@ yum -y install git openstack-tempest
 mkdir /tempest
 cd /tempest
 ln -s /usr/share/openstack-tempest-13.0.0 /usr/share/openstack-tempest
-sed -i 's/heat_stack_owner/heat_stack_user/g' /usr/share/openstack-tempest/tools/config_tempest.py
-sh /usr/share/openstack-tempest-13.0.0/tools/configure-tempest-directory
+#sed -i 's/heat_stack_owner/heat_stack_user/g' /usr/share/openstack-tempest/tools/config_tempest.py
+#sh /usr/share/openstack-tempest/tools/configure-tempest-directory
 tools/config_tempest.py --debug --create identity.uri ${OS_AUTH_URL} identity.admin_username ${OS_USERNAME} identity.admin_password ${OS_PASSWORD} identity.admin_tenant_name ${OS_TENANT_NAME} object-storage.operator_role swiftoperator
-python -m tempest.cmd.cleanup --init-saved-state
+#python -m tempest.cmd.cleanup --init-saved-state
+tempest cleanup
+tempest cleanup --init-saved-state
 tools/run-tests.sh | tee ra-out.txt
-python -m tempest.cmd.cleanup
+#python -m tempest.cmd.cleanup
+tempest cleanup
 cd -
 
 env

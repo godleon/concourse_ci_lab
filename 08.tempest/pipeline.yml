@@ -70,8 +70,8 @@ jobs:
       OS_TENANT_NAME: {{OS_TENANT_NAME}}
   - put: git-resource_build
     params: {repository: tempest_output}
-  - put: git-resource_semver
-    params: {bump: patch, file: git-resource_semver/version}
+  # - put: git-resource_semver
+  #   params: {bump: patch, file: git-resource_semver/version}
 
 - name: Build-Plane
   public: true

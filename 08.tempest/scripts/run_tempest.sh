@@ -27,6 +27,7 @@ tools/config_tempest.py --debug --create identity.uri ${OS_AUTH_URL} identity.ad
 #tempest cleanup --init-saved-state
 
 tools/run-tests.sh tempest.api.compute.flavors | tee ra-out.txt
+#tools/run-tests.sh tempest.api.compute.flavors | tee ra-out.txt
 #tools/run-tests.sh | tee ra-out.txt
 #tempest cleanup
 cd -

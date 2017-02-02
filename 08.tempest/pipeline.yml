@@ -51,11 +51,12 @@ jobs:
 - name: Functional-Test
   public: true
   plan:
-  - get: git-resource_osp
-    trigger: true
-  - get: git-resource_semver
-    params: {bump: patch}
-  - get: git-resource_build
+  - aggregate:
+    - get: git-resource_osp
+      trigger: true
+    - get: git-resource_semver
+      params: {bump: patch}
+    - get: git-resource_build
   - task: tempest-test
     file: git-resource_osp/08.tempest/build_tasks/tempest_test.yml
     params:
@@ -74,13 +75,14 @@ jobs:
 - name: Build-Plane
   public: true
   plan:
-  - get: git-resource_osp
-  - get: git-resource_semver
-    params: {bump: patch}
-  - get: git-resource_build
-    trigger: true
-    passed: [Functional-Test]
-  - get: git-resource_test-result
+  - aggregate:
+    - get: git-resource_osp
+    - get: git-resource_semver
+      params: {bump: patch}
+    - get: git-resource_build
+      trigger: true
+      passed: [Functional-Test]
+    - get: git-resource_test-result
   - task: parse-tempest-logs
     file: git-resource_osp/08.tempest/build_tasks/build_plane.yml
   - put: git-resource_test-result
@@ -92,7 +94,6 @@ jobs:
   public: true
   plan:
   - get: git-resource_semver
-    trigger: true
     params: {bump: patch}
     passed: [Functional-Test, Build-Plane]
   - put: slack-resource

@@ -5,7 +5,7 @@ set -x # print commands
 
 echo "================ in shell script (run_tempest.sh) ================"
 
-RESOURCE_VER=$(cat git-resource_semver/version)
+RESOURCE_VER=$(cat git-resource_semver_1/version)
 
 # 註冊 Red Hat CDN
 subscription-manager register --username ${REDHAT_USER_NAME} --password ${REDHAT_USER_PWD} --autosubscribe
@@ -36,7 +36,7 @@ env
 #echo "ANSIBLE_HOST_KEY_CHECKING = ${ANSIBLE_HOST_KEY_CHECKING}"
 
 git clone git-resource_build tempest_output
-cat git-resource_semver/version
+cat git-resource_semver_1/version
 find .
 
 if [ -d tempest_output/${RESOURCE_VER} ]; then

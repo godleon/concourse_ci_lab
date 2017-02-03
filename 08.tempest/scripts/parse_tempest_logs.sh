@@ -5,7 +5,7 @@ set -x # print commands
 
 echo "================ in shell script (parse_tempest_logs.sh) ================"
 
-RESOURCE_VER=$(cat git-resource_semver/version)
+RESOURCE_VER=$(cat git-resource_semver_2/version)
 
 env
 find .

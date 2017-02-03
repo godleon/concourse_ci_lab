@@ -45,7 +45,7 @@ cd git-resource_build_clean
 rm -rf *
 echo "new branch - build" > README.md
 #rm -rf git-resource_build_clean/${RESOURCE_VER}
-cd git-resource_build_clean
+#cd git-resource_build_clean
 git config --global user.email "nobody@concourse.ci"
 git config --global user.name "Concourse"
 git add .

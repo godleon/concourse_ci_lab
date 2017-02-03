@@ -30,27 +30,7 @@ resources:
     branch: build
     private_key: {{git-private-key}}
 
-- name: git-resource_semver_1
-  type: semver
-  source:
-    driver: git
-    initial_version: 0.0.1
-    uri: {{git-uri_test-result}}
-    branch: version
-    file: version
-    private_key: {{git-private-key}}
-
-- name: git-resource_semver_2
-  type: semver
-  source:
-    driver: git
-    initial_version: 0.0.1
-    uri: {{git-uri_test-result}}
-    branch: version
-    file: version
-    private_key: {{git-private-key}}
-
-- name: git-resource_semver_3
+- name: git-resource_semver
   type: semver
   source:
     driver: git
@@ -74,8 +54,7 @@ jobs:
   - aggregate:
     - get: git-resource_osp
       trigger: true
-    - get: git-resource_semver_1
-      params: {bump: patch}
+    - get: git-resource_semver
     - get: git-resource_build
   - task: tempest-test
     file: git-resource_osp/08.tempest/build_tasks/tempest_test.yml
@@ -97,8 +76,7 @@ jobs:
   plan:
   - aggregate:
     - get: git-resource_osp
-    - get: git-resource_semver_2
-      params: {bump: patch}
+    - get: git-resource_semver
     - get: git-resource_build
       trigger: true
       passed: [Functional-Test]
@@ -113,9 +91,7 @@ jobs:
 - name: Slack-Notify
   public: true
   plan:
-  - get: git-resource_semver_3
-    trigger: true
-    params: {bump: patch}
+  - get: git-resource_semver
     passed: [Functional-Test, Build-Plane]
   - put: slack-resource
     params:
@@ -133,8 +109,8 @@ jobs:
         http://10.5.17.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
         or at: 
         http://10.5.17.254:8080/builds/$BUILD_ID
-  - put: git-resource_semver_3
-    params: {bump: patch, file: git-resource_semver_3/version}
+  - put: git-resource_semver
+    params: {bump: patch, file: git-resource_semver/version}
 
 # - name: rally-test
 #   public: true

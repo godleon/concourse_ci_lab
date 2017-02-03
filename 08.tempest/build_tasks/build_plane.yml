@@ -8,7 +8,7 @@ image_resource:
 
 inputs:
 - name: git-resource_osp
-- name: git-resource_semver_2
+- name: git-resource_semver
 - name: git-resource_build
 - name: git-resource_test-result
 

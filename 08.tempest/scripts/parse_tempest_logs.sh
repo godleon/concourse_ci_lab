@@ -39,8 +39,12 @@ git add .
 git commit -m "Tempest output version ${RESOURCE_VER}"
 cd -
 
+# 移除 build branch 中所有的檔案 (不需要)
 git clone git-resource_build git-resource_build_clean
-rm -rf git-resource_build_clean/${RESOURCE_VER}
+cd git-resource_build_clean
+rm -rf *
+echo "new branch - build" > README.md
+#rm -rf git-resource_build_clean/${RESOURCE_VER}
 cd git-resource_build_clean
 git config --global user.email "nobody@concourse.ci"
 git config --global user.name "Concourse"

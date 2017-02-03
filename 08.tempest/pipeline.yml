@@ -92,6 +92,8 @@ jobs:
   public: true
   plan:
   - get: git-resource_semver
+    #params: {bump: patch}
+    trigger: true
     passed: [Functional-Test, Build-Plane]
   - put: slack-resource
     params:

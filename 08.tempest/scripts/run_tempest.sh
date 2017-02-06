@@ -8,7 +8,7 @@ echo "================ in shell script (run_tempest.sh) ================"
 RESOURCE_VER=$(cat git-resource_semver/version)
 
 # 註冊 Red Hat CDN
-subscription-manager register --username ${REDHAT_USER_NAME} --password ${REDHAT_USER_PWD} --autosubscribe
+subscription-manager register --username ${REDHAT_USER_NAME} --password ${REDHAT_USER_PWD}
 subscription-manager attach --pool=${REDHAT_REG_POOLID}
 subscription-manager repos --disable=*
 subscription-manager repos ${REDHAT_REPO_ENABLED}

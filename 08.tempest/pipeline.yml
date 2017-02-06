@@ -76,7 +76,9 @@ jobs:
   plan:
   - aggregate:
     - get: git-resource_osp
+      # trigger: true
     - get: git-resource_semver
+      # trigger: true
     - get: git-resource_build
       trigger: true
       passed: [Functional-Test]
@@ -91,17 +93,18 @@ jobs:
 - name: Slack-Notify
   public: true
   plan:
-  - get: git-resource_semver
-    #params: {bump: patch}
-    trigger: true
-    passed: [Build-Plane]
+  - aggregate:
+    - get: git-resource_build
+      trigger: true
+      passed: [Build-Plane]
+    - get: git-resource_semver
+      #params: {bump: patch}
+      # trigger: true
+      passed: [Build-Plane]
   - put: slack-resource
     params:
       channel: '#ci_message'
       icon_emoji: ':robot_face:'
-      # text: The newest version is deployed!
-      # text_file: git-resource_semver/version
-      # text_file: tempest_output/slack_message.txt
       text: |
         Tempest Result Link: https://godleon.github.io/osp_test_results/$(cat git-resource_semver/version)/tempest.html
         You can also download the compressed Tempest detail logs at:
@@ -117,12 +120,16 @@ jobs:
 - name: Renew-Version
   public: true
   plan:
+  - aggregate:
     - get: git-resource_semver
       params: {bump: patch}
       passed: [Slack-Notify]
+      # trigger: true
+    - get: git-resource_build
       trigger: true
-    - put: git-resource_semver
-      params: {file: git-resource_semver/version}
+      passed: [Slack-Notify]
+  - put: git-resource_semver
+    params: {file: git-resource_semver/version}
 
 # - name: rally-test
 #   public: true

@@ -15,6 +15,10 @@ subscription-manager repos ${REDHAT_REPO_ENABLED}
 
 # 執行 Tempest 測試
 yum -y install git openstack-tempest
+subscription-manager remove --all
+subscription-manager unregister
+subscription-manager clean
+
 mkdir /tempest
 cd /tempest
 ln -s /usr/share/openstack-tempest-13.0.0 /usr/share/openstack-tempest

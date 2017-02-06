@@ -94,7 +94,7 @@ jobs:
   - get: git-resource_semver
     #params: {bump: patch}
     trigger: true
-    passed: [Functional-Test, Build-Plane]
+    passed: [Build-Plane]
   - put: slack-resource
     params:
       channel: '#ci_message'

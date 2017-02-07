@@ -1,10 +1,10 @@
-resource_types:
+# resource_types:
 
-- name: slack-notification
-  type: docker-image
-  source:
-    repository: cfcommunity/slack-notification-resource
-    tag: latest
+# - name: slack-notification
+#   type: docker-image
+#   source:
+#     repository: cfcommunity/slack-notification-resource
+#     tag: latest
 
 resources:
 
@@ -32,10 +32,10 @@ resources:
     file: version
     private_key: {{git-private-key}}
 
-- name: slack
-  type: slack-notification
-  source:
-    url: https://hooks.slack.com/services/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
+# - name: slack
+#   type: slack-notification
+#   source:
+#     url: https://hooks.slack.com/services/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
 
 jobs:
 

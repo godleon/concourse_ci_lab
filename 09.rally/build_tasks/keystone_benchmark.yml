@@ -21,4 +21,4 @@ run:
     whoami
     env
     find .
-    git-osp/09.rally/scripts/run_keystone_benchmark.sh
+    bash git-osp/09.rally/scripts/run_keystone_benchmark.sh

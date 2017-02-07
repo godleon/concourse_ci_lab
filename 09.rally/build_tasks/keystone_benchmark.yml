@@ -20,5 +20,7 @@ run:
   - |
     whoami
     env
-    find .
-    bash git-osp/09.rally/scripts/run_keystone_benchmark.sh
+    rally-manage db recreate
+    rally deployment create --fromenv --name=existing
+    openstack image list
+    openstack flavor list

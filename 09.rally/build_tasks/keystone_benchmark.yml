@@ -23,6 +23,8 @@ run:
   - |
     whoami
     env
+    pwd
+    find .
 
     # apt-get update
     # apt-get -y install curl wget git python-pip vim bash-completion gcc lsb-release iputils-ping libffi-dev libpq-dev libssl-dev libxml2-dev libxslt1-dev python-dev

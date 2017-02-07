@@ -1,0 +1,102 @@
+{% set flavor_name = flavor_name or "m1.micro" %}
+{% set image_name = "^cirros.*img$" %}
+{% set failure_rate_max = 0 %}
+
+
+# {% macro runner_constant(times, concurrency) -%}
+#   runner:
+#     type: constant
+#     times: {{ times }}
+#     concurrency: {{ concurrency }}
+# {%- endmacro %}
+
+{% macro runner(type, times, concurrency) -%}
+  runner:
+    type: {{ type }}
+    times: {{ times }}
+    {% if type == "constant" %}concurrency: {{ concurrency }}{% elif type == "rps" %}rps: {{ concurrency }}{% endif %}
+{%- endmacro %}
+
+{% macro context(users_tenants, users_per_tenant, network_start_cidr) -%}
+  context:
+    users:
+      tenants: {{ users_tenants }}
+      users_per_tenant: {{ users_per_tenant }}
+    {% if network_start_cidr %}network:
+      start_cidr: {{ network_start_cidr }}{% endif %}
+{%- endmacro %}
+
+{% macro sla(failure_rate_max, max_avg_duration, max_seconds_per_iteration) -%}
+  sla:
+    {% if max_avg_duration %}max_avg_duration: {{ max_avg_duration }}{% endif %}
+    {% if max_seconds_per_iteration %}max_seconds_per_iteration: {{ max_seconds_per_iteration }}{% endif %}
+    failure_rate:
+      max: {{ failure_rate_max }}
+{%- endmacro %}
+
+
+---
+
+
+
+
+
+  Authenticate.keystone:
+  -
+    {{ runner("rps", 6000, 40) | indent }}
+    context:
+      users:
+        tenants: 5
+        users_per_tenant: 10
+    {{ sla(0, 5, 10) | indent }}
+
+# ---
+# # Check Keystone Client.
+# Authenticate.keystone:
+#   - {{ runner_constant(100, 5) | indent }}
+#     {{ context(3, 50, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}
+
+# # =================================================================
+
+# # Check Cinder Client to ensure validation of token.
+# #
+# # Creation of the client does not ensure validation of the token.
+# # We have to do some minimal operation to make sure token gets validated.
+# #
+# # PARAMETERS:
+# # * repetitions: number of times to validate
+# Authenticate.validate_cinder:
+#   - args:
+#       repetitions: 2
+#     {{ runner_constant(10, 5) | indent }}
+#     {{ context(3, 5, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}
+
+# Authenticate.validate_glance:
+#   - args:
+#       repetitions: 2
+#     {{ runner_constant(10, 5) | indent }}
+#     {{ context(3, 5, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}
+
+# Authenticate.validate_heat:
+#   - args:
+#       repetitions: 2
+#     {{ runner_constant(10, 5) | indent }}
+#     {{ context(3, 5, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}
+
+# Authenticate.validate_neutron:
+#   - args:
+#       repetitions: 2
+#     {{ runner_constant(10, 5) | indent }}
+#     {{ context(3, 5, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}
+
+# Authenticate.validate_nova:
+#   - args:
+#       repetitions: 2
+#     {{ runner_constant(10, 5) | indent }}
+#     {{ context(3, 5, "") | indent }}
+#     {{ sla(failure_rate_max) | indent }}

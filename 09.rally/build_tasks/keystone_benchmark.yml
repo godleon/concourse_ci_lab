@@ -1,0 +1,24 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: rallyforge/rally
+
+inputs:
+- name: git-osp
+- name: git-semver
+- name: git-results
+
+outputs:
+- name: rally_output
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    whoami
+    env
+    find .
+    git-osp/09.rally/scripts/run_keystone_benchmark.sh

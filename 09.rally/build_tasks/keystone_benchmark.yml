@@ -3,9 +3,10 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ubuntu
-    tag: xenial
-    # repository: rallyforge/rally
+    # repository: ubuntu
+    # tag: xenial
+    repository: rallyforge/rally
+    tag: latest
 
 inputs:
 - name: git-osp
@@ -23,16 +24,17 @@ run:
     whoami
     env
 
-    apt-get update
-    apt-get -y install curl wget git python-pip vim bash-completion gcc lsb-release
+    # apt-get update
+    # apt-get -y install curl wget git python-pip vim bash-completion gcc lsb-release iputils-ping libffi-dev libpq-dev libssl-dev libxml2-dev libxslt1-dev python-dev
+    
     # apt-get -y install curl wget git python-pip build-essential autoconf libtool pkg-config python-opengl python-imaging python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev
     
-    curl https://raw.githubusercontent.com/openstack/rally/master/install_rally.sh | bash
+    # curl https://raw.githubusercontent.com/openstack/rally/master/install_rally.sh | bash
     # pip3 install --upgrade pip
     # pip3 install rally/
     # git clone https://github.com/openstack/rally.git
     
-    rally-manage db recreate
+    # rally-manage db recreate
     rally deployment create --fromenv --name=existing
     openstack image list
     openstack flavor list

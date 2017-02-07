@@ -9,9 +9,9 @@ rally-manage db recreate
 
 rally deployment create --fromenv --name=existing
 
-source ~/.rally/openrc
+#source ~/.rally/openrc
 
-rally deployment check
+#rally deployment check
 
 openstack image list
 

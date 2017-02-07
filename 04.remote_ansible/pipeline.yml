@@ -11,4 +11,5 @@ jobs:
   - get: concourse_ci_lab
     trigger: true
   - task: Simple Ansible Task
+    privileged: true
     file: concourse_ci_lab/04.remote_ansible/simple_ping_task.yml

@@ -7,8 +7,6 @@ image_resource:
     # tag: xenial
     repository: rallyforge/rally
 
-privileged: true
-
 inputs:
 - name: git-osp
 - name: git-semver

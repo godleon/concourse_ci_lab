@@ -38,6 +38,6 @@ run:
     
     rally-manage db recreate
     rally deployment create --fromenv --name=existing
-    source ~/.rally/openrc
+    # source ~/.rally/openrc
     openstack image list
     openstack flavor list

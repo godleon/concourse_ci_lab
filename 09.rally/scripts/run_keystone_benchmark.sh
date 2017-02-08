@@ -15,13 +15,10 @@ sudo apt-get -y install python3
 
 cd git-osp/09.rally/scripts
 
-touch current_test.json
-touch current_test_name
+sudo touch current_test.json current_test_name touch consecutive_pass
+sudo cp rally_keystone_tests.json remain_tests.json
 
-touch consecutive_pass
-cp rally_keystone_tests.json remain_tests.json
-
-python3 git-osp/09.rally/scripts/rally_decide_test.py
+sudo python3 git-osp/09.rally/scripts/rally_decide_test.py
 
 rally task start --abort-on-sla-failure current_test.json
 rally task report --out $(echo current_test_name).html
@@ -29,7 +26,6 @@ rally task results > rally_result.json
 
 find .
 
-python3 git-osp/09.rally/scripts/rally_process_result.py
-
+sudo python3 git-osp/09.rally/scripts/rally_process_result.py
 
 cd -

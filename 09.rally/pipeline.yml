@@ -47,6 +47,7 @@ jobs:
     - get: git-semver
     - get: git-results
   - task: keystone-benchmark
+    privileged: true
     file: git-osp/09.rally/build_tasks/keystone_benchmark.yml
     params:
       OS_AUTH_URL: {{OS_AUTH_URL}}

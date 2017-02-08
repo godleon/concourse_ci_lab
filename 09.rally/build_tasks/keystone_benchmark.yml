@@ -24,7 +24,9 @@ run:
     whoami
     env
 
-    sudo apt-get -y install python3
+    sudo -s
+    apt-get -y install python3
+    exit
     # CI_DIR=$(pwd)
     # cd ${HOME}
     # pwd

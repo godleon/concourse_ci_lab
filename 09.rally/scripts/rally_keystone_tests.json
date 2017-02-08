@@ -15,9 +15,9 @@
             }
         }, 
         "sla": {
-            "max_seconds_per_iteration": 10.0,
+            "max_seconds_per_iteration": 5.0,
             "failure_rate": { "max": 0 },
-            "max_avg_duration": 5.0
+            "max_avg_duration": 3.0
         }
     }], 
     "Authenticate.validate_glance": [{
@@ -36,9 +36,9 @@
             }
         }, 
         "sla": {
-            "max_seconds_per_iteration": 10.0,
+            "max_seconds_per_iteration": 5.0,
             "failure_rate": { "max": 0 },
-            "max_avg_duration": 5.0
+            "max_avg_duration": 3.0
         }
     }]
 }

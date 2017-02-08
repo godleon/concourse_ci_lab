@@ -20,9 +20,9 @@ sudo cp rally_keystone_tests.json remain_tests.json
 
 sudo python3 rally_decide_test.py
 
-rally task start --abort-on-sla-failure current_test.json
-rally task report --out $(echo current_test_name).html
-rally task results > rally_result.json
+sudo rally task start --abort-on-sla-failure current_test.json
+sudo rally task report --out $(cat current_test_name).html
+sudo rally task results > rally_result.json
 
 find .
 

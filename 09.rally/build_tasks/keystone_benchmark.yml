@@ -24,9 +24,7 @@ run:
     whoami
     env
 
-    sudo -s
-    apt-get -y install python3
-    exit
+    ls -l /usr/bin/sudo
     # CI_DIR=$(pwd)
     # cd ${HOME}
     # pwd
@@ -46,4 +44,4 @@ run:
     openstack image list
     openstack flavor list
 
-    python3 git-osp/09.rally/scripts/check_rally_result.py
+    python git-osp/09.rally/scripts/check_rally_result.py

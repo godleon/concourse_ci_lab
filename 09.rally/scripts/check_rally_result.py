@@ -1,7 +1,7 @@
 import os, json
 
 cur_path = os.path.dirname(os.path.abspath(__file__))
-result_path = cur_path + './rally_result.json'
+result_path = cur_path + '/rally_result.json'
 
 data = []
 

@@ -22,7 +22,8 @@ sudo python3 rally_decide_test.py
 
 sudo rally task start --abort-on-sla-failure current_test.json
 sudo rally task report --out $(cat current_test_name).html
-sudo rally task results > rally_result.json
+find .
+sudo rally task results | sudo tee rally_result.json
 
 find .
 

@@ -5,7 +5,7 @@ from os.path import abspath, dirname
 from jinja2 import Environment, FileSystemLoader
 
 cur_path = dirname(abspath(__file__))
-print("cur_test = " + cur_test)
+print("cur_path = " + cur_path)
 propagate_tests_path = dirname(dirname(abspath(__file__))) + "/propagate_tests"
 print("propagate_tests_path = " + propagate_tests_path)
 

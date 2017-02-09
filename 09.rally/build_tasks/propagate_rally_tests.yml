@@ -35,8 +35,9 @@ run:
 
     cat upstream_tests.list
 
-    echo $(pwd) + '/' + rally/samples/tasks/scenarios/authenticate/keystone.json
-    cat $(pwd) + '/' + rally/samples/tasks/scenarios/authenticate/keystone.json
+    FIRST_FILE="$(pwd)/rally/samples/tasks/scenarios/authenticate/keystone.json"
+    echo ${FIRST_FILE}
+    cat ${FIRST_FILE}
 
     chmod +x propagate_test.py
     ./propagate_test.py

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONCOURSE_CI_URL="http://10.5.17.254:8080"
+CONCOURSE_CI_URL="http://10.5.18.254:8080"
 
 # 清除原有的 fly 設定檔
 echo '' > ~/.flyrc 

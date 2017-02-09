@@ -15,12 +15,26 @@ resources:
     branch: master
     private_key: {{git-private-key}}
 
-- name: git-results
+# - name: git-display
+#   type: git
+#   source:
+#     uri: {{git-uri_test-result}}
+#     branch: gh-pages
+#     private_key: {{git-private-key}}
+
+- name: rally_test
   type: git
   source:
     uri: {{git-uri_test-result}}
-    branch: gh-pages
+    branch: rally_test
     private_key: {{git-private-key}}
+    
+# - name: rally_result
+#   type: git
+#   source:
+#     uri: {{git-uri_test-result}}
+#     branch: rally_result
+#     private_key: {{git-private-key}}
 
 - name: git-semver
   type: semver
@@ -39,16 +53,17 @@ resources:
 
 jobs:
 
-- name: Keystone
+- name: init
   plan:
   - aggregate:
     - get: git-osp
       trigger: true
+    - get: rally_test
     - get: git-semver
-    - get: git-results
-  - task: keystone-benchmark
-    privileged: true
-    file: git-osp/09.rally/build_tasks/keystone_benchmark.yml
+      params: {bump: patch}
+  - task: propagate_rally_tests
+    # privileged: true
+    file: git-osp/09.rally/build_tasks/propagate_rally_tests.yml
     params:
       OS_AUTH_URL: {{OS_AUTH_URL}}
       OS_USERNAME: {{OS_USERNAME}}

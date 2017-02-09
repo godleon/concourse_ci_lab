@@ -30,5 +30,6 @@ run:
 
     find .
 
-    python3 git-osp/09.rally/scripts/propagate_test.py
+    chmod +x git-osp/09.rally/scripts/propagate_test.py
+    ./git-osp/09.rally/scripts/propagate_test.py
     find .

@@ -3,8 +3,10 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ubuntu
-    tag: xenial
+    repository: python
+    tag: 3.6
+    # repository: ubuntu
+    # tag: xenial
 
 inputs:
 - name: git-osp
@@ -31,9 +33,12 @@ run:
     git clone https://github.com/openstack/rally.git
     find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
 
-    find .
+    cat upstream_tests.list
+
+    echo $(pwd) + '/' + rally/samples/tasks/scenarios/authenticate/keystone.json
+    cat $(pwd) + '/' + rally/samples/tasks/scenarios/authenticate/keystone.json
 
     chmod +x propagate_test.py
     ./propagate_test.py
-    
+
     find .

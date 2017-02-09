@@ -4,8 +4,10 @@ import os, json, copy, sys
 from os.path import abspath, dirname
 from jinja2 import Environment, FileSystemLoader
 
-cur_path = os.path.dirname(abspath(__file__))
-propagate_tests_path = dirname(os.path.dirname(abspath(__file__))) + "/propagate_tests"
+cur_path = dirname(abspath(__file__))
+print("cur_test = " + cur_test)
+propagate_tests_path = dirname(dirname(abspath(__file__))) + "/propagate_tests"
+print("propagate_tests_path = " + propagate_tests_path)
 
 path_params = ""
 path_upstream_list = ""
@@ -30,7 +32,8 @@ with open(path_params, 'r') as f:
 
         with open(path_upstream_list, 'r') as ul:
             for path_test in ul:
-                path_test = path_test.replace('\n', "")
+                path_test = os.getcwd() + "/" + path_test.replace('\n', "")
+                print("path_test = " + path_test)
                 tmpl_output = template_env.get_template(path_test).render(template_context)
                 tmpl_test = json.loads(tmpl_output)
 

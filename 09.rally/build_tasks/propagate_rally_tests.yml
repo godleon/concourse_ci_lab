@@ -19,17 +19,22 @@ run:
   args:
   - -exc
   - |
+    ENTRY_PATH=$(pwd)
     whoami
     env
   
     apt-get update
     apt-get -y install git python3 python3-jinja2
 
+    
+    
+    cd git-osp/09.rally/scripts
+    mkdir -p propagate_tests
     git clone https://github.com/openstack/rally.git
-    find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > git-osp/09.rally/configs/upstream_tests.list
+    find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
 
     find .
 
-    chmod +x git-osp/09.rally/scripts/propagate_test.py
-    ./git-osp/09.rally/scripts/propagate_test.py
+    chmod +x propagate_test.py
+    ./propagate_test.py
     find .

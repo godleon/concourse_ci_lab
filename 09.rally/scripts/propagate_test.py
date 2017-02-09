@@ -5,15 +5,13 @@ from os.path import abspath, dirname
 from jinja2 import Environment, FileSystemLoader
 
 cur_path = dirname(abspath(__file__))
-print("cur_path = " + cur_path)
-propagate_tests_path = dirname(dirname(abspath(__file__))) + "/propagate_tests"
-print("propagate_tests_path = " + propagate_tests_path)
+propagate_tests_path = cur_path + "/propagate_tests"
 
 path_params = ""
 path_upstream_list = ""
 if len(sys.argv) == 1:
     path_params = dirname(cur_path) + '/configs/test_params.json'
-    path_upstream_list = dirname(cur_path) + '/configs/upstream_tests.list'
+    path_upstream_list = cur_path + '/upstream_tests.list'
 else:
     path_params = sys.argv[1]
     path_upstream_list = sys.argv[2]

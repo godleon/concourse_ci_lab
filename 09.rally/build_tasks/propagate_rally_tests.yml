@@ -28,5 +28,7 @@ run:
     git clone https://github.com/openstack/rally.git
     find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > git-osp/09.rally/configs/upstream_tests.list
 
+    find .
+
     python3 git-osp/09.rally/scripts/propagate_test.py
     find .

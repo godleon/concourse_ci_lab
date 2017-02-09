@@ -1,2 +1,4 @@
 credentials.yml
 .idea
+ignore-*
+rally_result.json

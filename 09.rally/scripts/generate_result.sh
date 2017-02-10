@@ -30,7 +30,7 @@ do
         CATE_NAME=${TMP##*/}
         TEST_NAME=${test##*/}
         if [ ${CATE_NAME} == ${cate} ]; then
-            echo "- [${TEST_NAME}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${cate}/${TEST_NAME%.json}.html)" | tee -a ${SUM_FILE}
+            echo "- [${TEST_NAME%.json}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${cate}/${TEST_NAME%.json}.html)" | tee -a ${SUM_FILE}
         fi
     done
 

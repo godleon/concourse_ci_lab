@@ -31,8 +31,7 @@ run:
 
     git clone rally_test propagated_tests
     rm -rf propagated_tests/*
-    echo "brach for being rally test queue" | tee propagated_tests/README.md
-    touch propagated_tests/README.md
+    echo "brach for being rally test queue - version ${RESOURCE_VER}" | tee propagated_tests/README.md
 
     cd git_osp/09.rally/scripts
     mkdir -p propagated_tests

@@ -23,7 +23,7 @@ openstack image list
 openstack flavor list
 
 REMAIN_TEST_COUNT=$(find ${ENTRY_PATH}/rally_remain_tests/ -type f -name '*.json' | wc -l)
-if [ ${REMAIN_TEST_COUNT} -gt 0 ];
+if [ ${REMAIN_TEST_COUNT} -gt 0 ]; then
     CUR_TEST=$(find ${ENTRY_PATH}/rally_remain_tests/ -type f -name '*.json' | sort | head -1)
     sudo rm ${CUR_TEST}
     cd ${ENTRY_PATH}/rally_remain_tests

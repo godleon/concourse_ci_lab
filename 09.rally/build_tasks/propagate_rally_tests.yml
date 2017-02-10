@@ -22,6 +22,7 @@ run:
   - -exc
   - |
     ENTRY_PATH=$(pwd)
+    RESOURCE_VER=$(cat git-semver/version)
     whoami
     env
   
@@ -38,5 +39,10 @@ run:
     chmod +x propagate_test.py
     ./propagate_test.py
     cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
-    cd ${ENTRY_PATH}
+    cd ${ENTRY_PATH}/propagated_tests
+    git config --global user.email "nobody@concourse.ci"
+    git config --global user.name "Concourse"
+    git add .
+    git commit -m "Rally propagated tests - version ${RESOURCE_VER}"
+    cd ..
     find .

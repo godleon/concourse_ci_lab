@@ -13,7 +13,7 @@ inputs:
 - name: git_semver
 
 outputs:
-- name: rally_output
+- name: rally_remain_tests
 
 run:
   path: sh

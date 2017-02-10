@@ -11,6 +11,7 @@ env
 
 sudo apt-get update
 sudo apt-get -y install git
+sudo git clone rally_test rally_remain_tests
 
 cd ${HOME}
 
@@ -21,9 +22,17 @@ rally deployment check
 openstack image list
 openstack flavor list
 
-REMAIN_TEST_COUNT=$(find ${ENTRY_PATH}/rally_test/ -type f -name '*.json' | wc -l)
-
-CUR_TEST=$(find ${ENTRY_PATH}/rally_test/ -type f -name '*.json' | sort | head -1)
+REMAIN_TEST_COUNT=$(find ${ENTRY_PATH}/rally_remain_tests/ -type f -name '*.json' | wc -l)
+if [ ${REMAIN_TEST_COUNT} -gt 0 ];
+    CUR_TEST=$(find ${ENTRY_PATH}/rally_remain_tests/ -type f -name '*.json' | sort | head -1)
+    sudo rm ${CUR_TEST}
+    cd ${ENTRY_PATH}/rally_remain_tests
+    sudo git config --global user.email "nobody@concourse.ci"
+    sudo git config --global user.name "Concourse"
+    sudo git add .
+    sudo git commit -m "Finished Rally test(${CUR_TEST##*/}) - version ${RESOURCE_VER}"
+    cd -
+fi
 
 env
 

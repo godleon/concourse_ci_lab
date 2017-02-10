@@ -32,7 +32,7 @@ run:
     apt-get -y install git
 
     git clone rally_test rally_remain_tests
-    cd rally_remain_test/
+    cd rally_remain_tests/
     CUR_TEST=$(cat current_test)
     rm -f current_test
     git config --global user.email "nobody@concourse.ci"

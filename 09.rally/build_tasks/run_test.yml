@@ -9,6 +9,7 @@ image_resource:
 inputs:
 - name: git_osp
 - name: rally_test
+- name: github_page
 - name: rally_result
 - name: git_semver
 

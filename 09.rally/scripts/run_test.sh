@@ -12,7 +12,7 @@ env
 sudo apt-get update
 sudo apt-get -y install git
 sudo git clone rally_test rally_remain_tests
-sudo git clone rally_result rally_test_output
+sudo git clone github_page rally_test_output
 
 cd ${HOME}
 

@@ -35,7 +35,7 @@ if [ ${REMAIN_TEST_COUNT} -gt 0 ]; then
     sudo mkdir -p ${PATH_OUTPUT}
     rally task start --abort-on-sla-failure ${CUR_TEST}
     sudo rally task report --out ${PATH_OUTPUT}/${TEST_NAME%.json}.html
-    rally task results | sudo tee ${PATH_OUTPUT}/${TEST_NAME}
+    rally task results | sudo tee ${PATH_OUTPUT}/${TEST_NAME} >/dev/null
 
     sudo rm ${CUR_TEST}
     cd ${ENTRY_PATH}/rally_remain_tests
@@ -61,4 +61,4 @@ env
 # find .
 # sudo rally task results | sudo tee rally_result.json
 
-find ${ENTRY_PATH}
+# find ${ENTRY_PATH}

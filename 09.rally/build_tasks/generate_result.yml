@@ -5,8 +5,6 @@ image_resource:
   source:
     repository: python
     tag: "3.6"
-    # repository: ubuntu
-    # tag: xenial
 
 inputs:
 - name: git_osp

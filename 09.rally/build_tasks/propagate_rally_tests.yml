@@ -38,5 +38,5 @@ run:
     chmod +x propagate_test.py
     ./propagate_test.py
     cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
-    cd {ENTRY_PATH}
+    cd ${ENTRY_PATH}
     find .

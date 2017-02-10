@@ -31,6 +31,7 @@ if [ ${REMAIN_TEST_COUNT} -gt 0 ]; then
     TEST_NAME=${CUR_TEST##*/}
 
     # Run Rally test and generate output here!
+    sudo mkdir -p ${ENTRY_PATH}/rally_test_output/${RESOURCE_VER}/${CATE_NAME}
     rally task start --abort-on-sla-failure ${CUR_TEST}
     sudo rally task report --out ${ENTRY_PATH}/rally_test_output/${RESOURCE_VER}/${CATE_NAME}/${TEST_NAME%.json}.html
     rally task results | tee ${ENTRY_PATH}/rally_test_output/${RESOURCE_VER}/${CATE_NAME}/${TEST_NAME}

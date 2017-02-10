@@ -73,6 +73,7 @@ jobs:
 - name: rally_test
   plan:
   - aggregate:
+    - get: git_osp
     - get: rally_test
       trigger: true
       passed: [rally_init]

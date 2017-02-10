@@ -27,6 +27,7 @@ if [ ${REMAIN_TEST_COUNT} -gt 0 ]; then
     CUR_TEST=$(find ${ENTRY_PATH}/rally_remain_tests/ -type f -name '*.json' | sort | head -1)
     sudo rm ${CUR_TEST}
     cd ${ENTRY_PATH}/rally_remain_tests
+    echo "${CUR_TEST}" | sudo tee current_test
     sudo git config --global user.email "nobody@concourse.ci"
     sudo git config --global user.name "Concourse"
     sudo git add .

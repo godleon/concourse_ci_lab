@@ -1,0 +1,63 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: python
+    tag: "3.6"
+    # repository: ubuntu
+    # tag: xenial
+
+inputs:
+- name: git_osp
+- name: git_semver
+- name: rally_test
+- name: rally_result
+
+outputs:
+- name: rally_remain_tests
+#- name: rally_result_output
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    # ENTRY_PATH=$(pwd)
+    RESOURCE_VER=$(cat git_semver/version)
+    whoami
+    env
+  
+    apt-get update
+    apt-get -y install git
+
+    git clone rally_test rally_remain_tests
+    cd rally_remain_test/
+    CUR_TEST=$(cat current_test)
+    rm -f current_test
+    git config --global user.email "nobody@concourse.ci"
+    git config --global user.name "Concourse"
+    git add .
+    git commit -m "Remove current test(${CUR_TEST}) for iteration - version ${RESOURCE_VER}"
+    
+    cd -
+    find .
+
+    # rm -rf propagated_tests/*
+    # echo "brach for being rally test queue - version ${RESOURCE_VER}" | tee propagated_tests/README.md
+
+    # cd git_osp/09.rally/scripts
+    # mkdir -p propagated_tests
+    # git clone https://github.com/openstack/rally.git
+    # find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
+
+    # chmod +x propagate_test.py
+    # ./propagate_test.py
+    # cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
+    # cd ${ENTRY_PATH}/propagated_tests
+    # git config --global user.email "nobody@concourse.ci"
+    # git config --global user.name "Concourse"
+    # git add .
+    # git commit -m "Rally propagated tests - version ${RESOURCE_VER}"
+    # cd ..
+    # find .

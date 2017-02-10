@@ -70,13 +70,13 @@ jobs:
   - put: git_semver
     params: {file: git_semver/version}
 
-- name: rally_test
+- name: execute_test
   plan:
   - aggregate:
     - get: git_osp
     - get: rally_test
-      trigger: true
     - get: rally_result
+      trigger: true
     - get: git_semver
       trigger: true
       passed: [rally_init]
@@ -91,16 +91,16 @@ jobs:
   - put: rally_test
     params: {repository: rally_remain_tests}
 
-- name: rally_result
+- name: gen_result
   plan:
   - aggregate:
     - get: git_osp
     - get: rally_test
       trigger: true
-      passed: [rally_test]
+      passed: [execute_test]
     - get: rally_result
     - get: git_semver
   - task: generate_testing_result
     file: git_osp/09.rally/build_tasks/generate_result.yml
-  - put: rally_test
-    params: {repository: rally_remain_tests}
+  - put: rally_result
+    params: {repository: rally_summary}

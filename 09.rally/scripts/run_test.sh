@@ -33,7 +33,7 @@ if [ ${REMAIN_TEST_COUNT} -gt 0 ]; then
     # Run Rally test and generate output here!
     PATH_OUTPUT="${ENTRY_PATH}/rally_test_output/${RESOURCE_VER}/${CATE_NAME}"
     sudo mkdir -p ${PATH_OUTPUT}
-    rally task start --abort-on-sla-failure ${CUR_TEST}
+    rally task start --abort-on-sla-failure ${CUR_TEST} >/dev/null
     sudo rally task report --out ${PATH_OUTPUT}/${TEST_NAME%.json}.html
     rally task results | sudo tee ${PATH_OUTPUT}/${TEST_NAME} >/dev/null
 

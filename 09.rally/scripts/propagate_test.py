@@ -65,6 +65,14 @@ with open(path_params, 'r') as f:
                                     "times": item["runner"]["time"],
                                     "rps": i
                                 }
+                        
+                        if "runner" in item.keys():
+                            if item["runner"]["type"] == "constant":
+                                dict_test["runner"] = {
+                                    "type": item["runner"]["type"],
+                                    "times": item["runner"]["time"],
+                                    "concurrency": i
+                                }
 
                         if "sla" in item.keys():
                             dict_test["sla"] = {

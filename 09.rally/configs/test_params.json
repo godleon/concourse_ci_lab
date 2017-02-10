@@ -1,6 +1,7 @@
 {
-    "Authenticate.validate_cinder": { "runner": { "type": "rps", "time": 5000, "min": 31, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-    "Authenticate.validate_glance": { "runner": { "type": "rps", "time": 5000, "min": 31, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-    "Authenticate.validate_heat": { "runner": { "type": "rps", "time": 5000, "min": 31, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "rps", "time": 200, "min": 2, "max": 30 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 50.0 } }
+    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 200, "min": 2, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 } },
+    "NovaServers.boot_and_list_server": { "runner": { "type": "constant", "time": 200, "min": 2, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 } }
 }

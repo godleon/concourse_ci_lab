@@ -12,7 +12,7 @@ apt-get -y install git
 
 git clone rally_result rally_summary
 cd rally_summary
-# mkdir -p ${RESOURCE_VER}
+mkdir -p ${RESOURCE_VER}
 
 
 SUM_FILE="${RESOURCE_VER}/README.md"

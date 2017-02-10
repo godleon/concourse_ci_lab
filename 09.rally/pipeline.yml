@@ -16,13 +16,6 @@ resources:
     branch: master
     private_key: {{git-private-key}}
 
-# - name: git-display
-#   type: git
-#   source:
-#     uri: {{git-uri_test-result}}
-#     branch: gh-pages
-#     private_key: {{git-private-key}}
-
 - name: rally_test
   type: git
   check_every: 30s
@@ -36,7 +29,7 @@ resources:
   check_every: 30s
   source:
     uri: {{git-uri_test-result}}
-    branch: rally_result
+    branch: gh-pages
     private_key: {{git-private-key}}
 
 - name: git_semver

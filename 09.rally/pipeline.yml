@@ -31,14 +31,14 @@ resources:
     branch: rally_test
     private_key: {{git-private-key}}
     
-# - name: rally_result
-#   type: git
-#   source:
-#     uri: {{git-uri_test-result}}
-#     branch: rally_result
-#     private_key: {{git-private-key}}
+- name: rally_result
+  type: git
+  source:
+    uri: {{git-uri_test-result}}
+    branch: rally_result
+    private_key: {{git-private-key}}
 
-- name: git-semver
+- name: git_semver
   type: semver
   source:
     driver: git
@@ -61,17 +61,27 @@ jobs:
     - get: git-osp
       trigger: true
     - get: rally_test
-    - get: git-semver
+    - get: git_semver
       params: {bump: patch}
   - task: propagate_rally_tests
-    # privileged: true
     file: git-osp/09.rally/build_tasks/propagate_rally_tests.yml
+  - put: rally_test
+    params: {repository: propagated_tests}
+  - put: git_semver
+    params: {file: git_semver/version}
+
+- name: rally_test
+  plan:
+  - aggregate:
+    - get: rally_test
+      trigger: true
+    - get: rally_result
+    - get: git-semver
+  - task: run_test
+    privileged: true
     params:
       OS_AUTH_URL: {{OS_AUTH_URL}}
       OS_USERNAME: {{OS_USERNAME}}
       OS_PASSWORD: {{OS_PASSWORD}}
       OS_TENANT_NAME: {{OS_TENANT_NAME}}
-  - put: rally_test
-    params: {repository: propagated_tests}
-  - put: git-semver
-    params: {file: git-semver/version}
+    file: git-osp/09.rally/build_tasks/run_test.yml

@@ -3,15 +3,13 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    # repository: ubuntu
-    # tag: xenial
     repository: rallyforge/rally
     tag: latest
 
 inputs:
-- name: git-osp
-- name: git-semver
-- name: git-results
+- name: rally_test
+- name: rally_result
+- name: git_semver
 
 outputs:
 - name: rally_output
@@ -21,7 +19,10 @@ run:
   args:
   - -exc
   - |
+    ENTRY_PATH=$(pwd)
+    RESOURCE_VER=$(cat git_semver/version)
+    
     whoami
     env
   
-    bash git-osp/09.rally/scripts/run_keystone_benchmark.sh
+    bash git-osp/09.rally/scripts/run_test.sh

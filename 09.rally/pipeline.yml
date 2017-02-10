@@ -25,7 +25,7 @@ resources:
 
 - name: rally_test
   type: git
-  check_every: 30s
+  # check_every: 30s
   source:
     uri: {{git-uri_test-result}}
     branch: rally_test

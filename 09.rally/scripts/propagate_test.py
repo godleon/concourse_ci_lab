@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os, json, copy, sys
+import os, json, copy, sys, shutil
 from os.path import abspath, dirname
 from jinja2 import Environment, FileSystemLoader
 
@@ -30,18 +30,22 @@ with open(path_params, 'r') as f:
 
         with open(path_upstream_list, 'r') as ul:
             for path_test in ul:
-                path_test = os.getcwd() + "/" + path_test.replace('\n', "")
-                print("path_test = " + path_test)
-                tmpl_output = template_env.get_template(path_test).render(template_context)
+                path_test = path_test.replace("\n", "")
+
+                file_name = path_test[path_test.rindex("/")+1:]
+                tmp_filename = os.getcwd() + "/" + file_name
+                shutil.copyfile(path_test, tmp_filename)
+                tmpl_output = template_env.get_template(file_name).render(template_context)
                 tmpl_test = json.loads(tmpl_output)
+                os.remove(tmp_filename)
 
                 if list(tmpl_test)[0] == key:
                     propagated_test = {key: []}
 
                     # test template 的路徑
-                    ary_testname = path_test.split('/')
-                    test_category_path = propagate_tests_path + "/" + ary_testname[4]
-                    path_test_name = test_category_path + "/" + ary_testname[5]
+                    str = path_test
+                    test_category_path = propagate_tests_path + "/" + str[:str.rindex("/")][str[:str.rindex("/")].rindex("/")+1:]
+                    path_test_name = test_category_path + "/" + file_name
 
                     # 建立不同 service 的目錄
                     if not os.path.exists(test_category_path):

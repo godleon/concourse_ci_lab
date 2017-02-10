@@ -14,7 +14,7 @@ inputs:
 - name: rally_test
 
 outputs:
-- name: rally_test_output
+- name: propagated_tests
 
 run:
   path: sh

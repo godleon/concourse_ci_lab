@@ -76,9 +76,10 @@ jobs:
     - get: git_osp
     - get: rally_test
       trigger: true
-      passed: [rally_init]
     - get: rally_result
     - get: git_semver
+      trigger: true
+      passed: [rally_init]
   - task: run_test
     privileged: true
     params:

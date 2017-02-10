@@ -28,7 +28,7 @@ do
         CATE_NAME=$(echo ${test} | cut -d'/' -f6 | uniq)
         TEST_NAME=${test##*/}
         if [ ${CATE_NAME} == ${cate} ]; then
-            echo "- [${TEST_NAME}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${TEST_NAME%.json}})"
+            echo "- [${TEST_NAME}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${TEST_NAME%.json}})" | tee -a ${SUM_FILE}
         fi
     done
 

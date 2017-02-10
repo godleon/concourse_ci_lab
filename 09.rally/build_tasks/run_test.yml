@@ -20,14 +20,5 @@ run:
   args:
   - -exc
   - |
-    ENTRY_PATH=$(pwd)
-    RESOURCE_VER=$(cat git_semver/version)
-    
-    whoami
-    env
-  
-    sudo apt-get update
-    sudo apt-get -y install git
-
-    cd ${HOME}
-    bash ${ENTRY_PATH}/git_osp/09.rally/scripts/run_test.sh
+    sudo chmod a+x git_osp/09.rally/scripts/run_test.sh
+    ./git_osp/09.rally/scripts/run_test.sh

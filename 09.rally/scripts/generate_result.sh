@@ -25,10 +25,12 @@ do
 
     for test in $(cat ${FINISHED_TESTS});
     do
-        CATE_NAME=$(echo ${test} | cut -d'/' -f6 | uniq)
+        TMP=${test%/*}
+        # CATE_NAME=$(echo ${test} | cut -d'/' -f6 | uniq)
+        CATE_NAME=${TMP##*/}
         TEST_NAME=${test##*/}
         if [ ${CATE_NAME} == ${cate} ]; then
-            echo "- [${TEST_NAME}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${TEST_NAME%.json}})" | tee -a ${SUM_FILE}
+            echo "- [${TEST_NAME}](https://godleon.github.io/osp_test_results/${RESOURCE_VER}/${cate}/${TEST_NAME%.json}.html)" | tee -a ${SUM_FILE}
         fi
     done
 

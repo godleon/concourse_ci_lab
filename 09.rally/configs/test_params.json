@@ -2,5 +2,5 @@
     "Authenticate.validate_cinder": { "runner": { "type": "rps", "time": 200, "min": 31, "max": 33 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
     "Authenticate.validate_glance": { "runner": { "type": "rps", "time": 200, "min": 31, "max": 33 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
     "Authenticate.validate_heat": { "runner": { "type": "rps", "time": 200, "min": 31, "max": 33 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "rps", "time": 100, "min": 2, "max": 5 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 50.0 } }
+    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "rps", "time": 10, "min": 2, "max": 5 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 50.0 } }
 }

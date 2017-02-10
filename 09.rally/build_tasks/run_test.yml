@@ -14,6 +14,7 @@ inputs:
 
 outputs:
 - name: rally_remain_tests
+- name: rally_test_output
 
 run:
   path: sh

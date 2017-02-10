@@ -91,6 +91,8 @@ jobs:
     file: git_osp/09.rally/build_tasks/run_test.yml
   - put: rally_test
     params: {repository: rally_remain_tests}
+  - put: rally_result
+    params: {repository: rally_test_output}
 
 - name: gen_result
   plan:

@@ -46,5 +46,5 @@ run:
     git config --global user.name "Concourse"
     git add .
     git commit -m "Rally propagated tests - version ${RESOURCE_VER}"
-    cd ..
+    cd ${ENTRY_PATH}
     find .

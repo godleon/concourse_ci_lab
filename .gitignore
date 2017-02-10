@@ -2,3 +2,4 @@ credentials.yml
 .idea
 ignore-*
 rally_result.json
+09.rally/scripts/propagated_tests/*

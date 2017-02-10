@@ -7,6 +7,7 @@ image_resource:
     tag: latest
 
 inputs:
+- name: git_osp
 - name: rally_test
 - name: rally_result
 - name: git_semver
@@ -25,4 +26,4 @@ run:
     whoami
     env
   
-    bash git-osp/09.rally/scripts/run_test.sh
+    bash git_osp/09.rally/scripts/run_test.sh

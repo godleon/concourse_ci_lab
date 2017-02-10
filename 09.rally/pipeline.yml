@@ -8,7 +8,7 @@
 
 resources:
 
-- name: git-osp
+- name: git_osp
   type: git
   check_every: 30s
   source:
@@ -58,13 +58,13 @@ jobs:
 - name: rally_init
   plan:
   - aggregate:
-    - get: git-osp
+    - get: git_osp
       trigger: true
     - get: rally_test
     - get: git_semver
       params: {bump: patch}
   - task: propagate_rally_tests
-    file: git-osp/09.rally/build_tasks/propagate_rally_tests.yml
+    file: git_osp/09.rally/build_tasks/propagate_rally_tests.yml
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver
@@ -75,8 +75,9 @@ jobs:
   - aggregate:
     - get: rally_test
       trigger: true
+      passed: [rally_init]
     - get: rally_result
-    - get: git-semver
+    - get: git_semver
   - task: run_test
     privileged: true
     params:
@@ -84,4 +85,4 @@ jobs:
       OS_USERNAME: {{OS_USERNAME}}
       OS_PASSWORD: {{OS_PASSWORD}}
       OS_TENANT_NAME: {{OS_TENANT_NAME}}
-    file: git-osp/09.rally/build_tasks/run_test.yml
+    file: git_osp/09.rally/build_tasks/run_test.yml

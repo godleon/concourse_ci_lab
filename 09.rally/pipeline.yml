@@ -71,5 +71,7 @@ jobs:
       OS_USERNAME: {{OS_USERNAME}}
       OS_PASSWORD: {{OS_PASSWORD}}
       OS_TENANT_NAME: {{OS_TENANT_NAME}}
-  # - put: git-resource_build
-  #   params: {repository: tempest_output}
+  - put: rally_test
+    params: {repository: propagated_tests}
+  - put: git-semver
+    params: {file: git-semver/version}

@@ -28,18 +28,15 @@ run:
     apt-get update
     apt-get -y install git python3 python3-jinja2
 
+    git clone rally_test propagated_tests
+
     cd git-osp/09.rally/scripts
-    mkdir -p propagate_tests
+    mkdir -p propagated_tests
     git clone https://github.com/openstack/rally.git
     find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
 
-    cat upstream_tests.list
-
-    FIRST_FILE="$(pwd)/rally/samples/tasks/scenarios/authenticate/keystone.json"
-    echo ${FIRST_FILE}
-    cat ${FIRST_FILE}
-
     chmod +x propagate_test.py
     ./propagate_test.py
-
+    cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
+    cd {ENTRY_PATH}
     find .

@@ -17,9 +17,9 @@ else:
     path_upstream_list = sys.argv[2]
 
 # 讀取 jinja2 template 檔案用的環境變數
-template_context = {
-    "flavor_name": "t1.medium"
-}
+# template_context = {
+#     "args": { "flavor": { "name": "t1.medium" } }
+# }
 template_env = Environment(autoescape=False, loader=FileSystemLoader(cur_path), trim_blocks=False)
 
 with open(path_params, 'r') as f:
@@ -35,7 +35,8 @@ with open(path_params, 'r') as f:
                 file_name = path_test[path_test.rindex("/")+1:]
                 tmp_filename = os.getcwd() + "/" + file_name
                 shutil.copyfile(path_test, tmp_filename)
-                tmpl_output = template_env.get_template(file_name).render(template_context)
+                # tmpl_output = template_env.get_template(file_name).render(template_context)
+                tmpl_output = template_env.get_template(file_name).render()
                 tmpl_test = json.loads(tmpl_output)
                 os.remove(tmp_filename)
 
@@ -57,6 +58,10 @@ with open(path_params, 'r') as f:
 
                         if "repetitions" in dict_test["args"].keys():
                             dict_test["args"]["repetitions"] = 1
+
+                        if "args" in item.keys():
+                            if "flavor" in item["args"].keys():
+                                dict_test["args"]["flavor"]["name"] = item["args"]["flavor"]
 
                         if "runner" in item.keys():
                             if item["runner"]["type"] == "rps":
@@ -80,6 +85,12 @@ with open(path_params, 'r') as f:
                                 "max_avg_duration": item["sla"]["avg"],
                                 "max_seconds_per_iteration": item["sla"]["max"]
                             }
+
+                        if "quotas" in item.keys():
+                            dict_test["context"]["quotas"] = item["quotas"]
+
+                        dict_test["context"]["users"]["tenants"] = 3
+                        dict_test["context"]["users"]["users_per_tenant"] = 5
 
                         propagated_test[key].append(dict_test)
 

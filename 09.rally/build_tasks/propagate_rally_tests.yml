@@ -26,8 +26,8 @@ run:
     whoami
     env
   
-    apt-get update
-    apt-get -y install git python3 python3-jinja2
+    apt-get update >/dev/null
+    apt-get -y install git python3 python3-jinja2 >/dev/null
 
     git clone rally_test propagated_tests
     rm -rf propagated_tests/*
@@ -46,5 +46,3 @@ run:
     git config --global user.name "Concourse"
     git add .
     git commit -m "Rally propagated tests - version ${RESOURCE_VER}"
-    cd ${ENTRY_PATH}
-    find .

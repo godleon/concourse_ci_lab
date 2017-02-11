@@ -9,8 +9,8 @@ RESOURCE_VER=$(cat git_semver/version)
 whoami
 env
 
-sudo apt-get update
-sudo apt-get -y install git
+sudo apt-get update >/dev/null
+sudo apt-get -y install git >/dev/null
 sudo git clone rally_test rally_remain_tests
 sudo git clone github_page rally_test_output
 

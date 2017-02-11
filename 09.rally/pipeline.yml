@@ -1,10 +1,10 @@
-# resource_types:
+resource_types:
 
-# - name: slack-notification
-#   type: docker-image
-#   source:
-#     repository: cfcommunity/slack-notification-resource
-#     tag: latest
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
 
 resources:
 
@@ -50,10 +50,10 @@ resources:
     file: version
     private_key: {{git-private-key}}
 
-# - name: slack
-#   type: slack-notification
-#   source:
-#     url: https://hooks.slack.com/services/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
+- name: slack
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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
 
 jobs:
 
@@ -67,10 +67,23 @@ jobs:
       params: {bump: patch}
   - task: propagate_rally_tests
     file: git_osp/09.rally/build_tasks/propagate_rally_tests.yml
+    on_success:
+      put: slack
+      params:
+        channel: '#ci_message'
+        icon_emoji: ':robot_face:'
+        text: |
+          Rally is running now, you can check the progress from the following summary link:
+          https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
+
+          The build had a result. Check it out at:
+          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at: 
+          http://10.5.18.254:8080/builds/$BUILD_ID
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver
-    params: {file: git_semver/version}
+    params: {file: git_semver/version}        
 
 - name: execute_test
   plan:
@@ -91,6 +104,16 @@ jobs:
       OS_PASSWORD: {{OS_PASSWORD}}
       OS_TENANT_NAME: {{OS_TENANT_NAME}}
     file: git_osp/09.rally/build_tasks/run_test.yml
+    on_failure:
+      put: slack
+      params:
+        channel: '#ci_message'
+        icon_emoji: ':robot_face:'
+        text: |
+          Rally test($(cat git_semver/version)) has failed, please check it out at:
+          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at: 
+          http://10.5.18.254:8080/builds/$BUILD_ID
   - put: rally_test
     params: {repository: rally_remain_tests}
   - put: github_page
@@ -107,5 +130,15 @@ jobs:
     - get: git_semver
   - task: generate_testing_result
     file: git_osp/09.rally/build_tasks/generate_result.yml
+    on_failure:
+      put: slack
+      params:
+        channel: '#ci_message'
+        icon_emoji: ':robot_face:'
+        text: |
+          Rally test($(cat git_semver/version)) has failed, please check it out at:
+          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at: 
+          http://10.5.18.254:8080/builds/$BUILD_ID
   - put: rally_result
     params: {repository: rally_summary}

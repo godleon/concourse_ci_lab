@@ -7,8 +7,8 @@ FINISHED_TESTS="$(pwd)/rally_test/finished_tests"
 whoami
 env
 
-apt-get update
-apt-get -y install git
+apt-get update >/dev/null
+apt-get -y install git >/dev/null
 
 git clone rally_result rally_summary
 cd rally_summary

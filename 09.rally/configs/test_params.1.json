@@ -1,0 +1,17 @@
+{
+    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 5000, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    
+    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 5000, "min": 36, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    
+    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 5000, "min": 55, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    
+    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "quotas": { "cinder": { "volumes": -1 } } },
+    
+    "GlanceImages.create_and_delete_image": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 } },
+
+    "NeutronNetworks.create_and_delete_floating_ips": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_delete_networks": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    
+    "NovaServers.boot_and_list_server": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 11 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } }
+}

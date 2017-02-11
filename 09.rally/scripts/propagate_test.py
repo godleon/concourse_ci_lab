@@ -56,8 +56,9 @@ with open(path_params, 'r') as f:
                     for i in range(item["runner"]["min"], item["runner"]["max"] + 1):
                         dict_test = copy.deepcopy(tmpl_test[key][0])
 
-                        if "repetitions" in dict_test["args"].keys():
-                            dict_test["args"]["repetitions"] = 1
+                        if "args" in dict_test:
+                            if "repetitions" in dict_test["args"].keys():
+                                dict_test["args"]["repetitions"] = 1
 
                         if "args" in item.keys():
                             if "flavor" in item["args"].keys():
@@ -89,8 +90,12 @@ with open(path_params, 'r') as f:
                         if "quotas" in item.keys():
                             dict_test["context"]["quotas"] = item["quotas"]
 
-                        dict_test["context"]["users"]["tenants"] = 3
-                        dict_test["context"]["users"]["users_per_tenant"] = 5
+                        if "context" in dict_test:
+                            if "users" in dict_test["context"]:
+                                if "tenants" in dict_test["context"]["users"]:
+                                    dict_test["context"]["users"]["tenants"] = 3
+                                if "users_per_tenant" in dict_test["context"]["users"]:
+                                    dict_test["context"]["users"]["users_per_tenant"] = 5
 
                         propagated_test[key].append(dict_test)
 

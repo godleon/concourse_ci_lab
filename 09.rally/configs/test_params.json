@@ -1,17 +1,45 @@
 {
-    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 500, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 5000, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
     
-    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 500, "min": 36, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 5000, "min": 36, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
     
-    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 500, "min": 55, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 5000, "min": 55, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
     
-    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 20 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "quotas": { "cinder": { "volumes": -1 } } },
-    
-    "GlanceImages.create_and_delete_image": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 20 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 } },
+    "CinderVolumes.create_and_accept_transfer": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 } },
 
-    "NeutronNetworks.create_and_delete_floating_ips": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 }, "quotas": { "cinder": { "volumes": -1 } } },
 
-    "NeutronNetworks.create_and_delete_networks": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "CinderVolumes.create_and_delete_snapshot": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 } },
     
-    "NovaServers.boot_and_list_server": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 20 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } }
+    "GlanceImages.create_and_delete_image": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 } },
+
+    "KeystoneBasic.add_and_remove_user_role": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.authenticate_user_and_validate_token": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_add_and_list_user_roles": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_delete_role": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_delete_service": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_delete_user": { "runner": { "type": "constant", "time": 5000, "min": 31, "max": 31 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_delete_floating_ips": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_delete_networks": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    
+    "NovaServers.boot_and_list_server": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 11 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } }, 
+    
+    "NovaServers.boot_and_get_console_output": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 11 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } },  
+    "NovaServers.boot_and_live_migrate_server": { "runner": { "type": "constant", "time": 500, "min": 11, "max": 11 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } }, 
+    "SwiftObjects.create_container_and_object_then_delete_all": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    
+    "SwiftObjects.create_container_and_object_then_download_object": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    
+    "SwiftObjects.create_container_and_object_then_list_objects": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    
+    "SwiftObjects.list_and_download_objects_in_containers": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    
+    "SwiftObjects.list_objects_in_containers": { "runner": { "type": "constant", "time": 5000, "min": 11, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }
 }

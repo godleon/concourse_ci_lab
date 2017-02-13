@@ -20,6 +20,11 @@ else:
 # template_context = {
 #     "args": { "flavor": { "name": "t1.medium" } }
 # }
+
+quota_cinder = { "gigabytes": -1, "snapshots": -1, "volumes": -1 }
+quota_neutron = {"floatingip": -1, "health_monitor": -1, "network": -1, "pool": -1, "port": -1, "router": -1, "security_group": -1, "security_group_rule": -1, "subnet": -1, "vip": -1}
+quota_nova = {"cores": -1, "fixed_ips": -1, "floating_ips": -1, "injected_file_content_bytes": -1, "injected_file_path_bytes": -1, "injected_files": -1, "instances": -1, "key_pairs": -1, "metadata_items": -1, "ram": -1, "security_group_rules": -1, "security_groups": -1, "server_group_members": -1, "server_groups": -1}
+
 template_env = Environment(autoescape=False, loader=FileSystemLoader(cur_path), trim_blocks=False)
 
 with open(path_params, 'r') as f:
@@ -41,6 +46,7 @@ with open(path_params, 'r') as f:
                 os.remove(tmp_filename)
 
                 if list(tmpl_test)[0] == key:
+
                     propagated_test = {key: []}
 
                     # test template 的路徑
@@ -55,10 +61,14 @@ with open(path_params, 'r') as f:
                     # 根據參數調整測試檔案
                     for i in range(item["runner"]["min"], item["runner"]["max"] + 1):
                         dict_test = copy.deepcopy(tmpl_test[key][0])
+                        if len(tmpl_test[key]) == 2:
+                            dict_test = copy.deepcopy(tmpl_test[key][1])
 
                         if "args" in dict_test:
                             if "repetitions" in dict_test["args"].keys():
                                 dict_test["args"]["repetitions"] = 1
+                            if "block_migration" in dict_test["args"].keys():
+                                dict_test["args"]["block_migration"] = False
 
                         if "args" in item.keys():
                             if "flavor" in item["args"].keys():
@@ -87,8 +97,16 @@ with open(path_params, 'r') as f:
                                 "max_seconds_per_iteration": item["sla"]["max"]
                             }
 
-                        if "quotas" in item.keys():
-                            dict_test["context"]["quotas"] = item["quotas"]
+                        # if "quotas" in item.keys():
+                        #     dict_test["context"]["quotas"] = item["quotas"]
+                        if "context" not in dict_test:
+                            dict_test["context"] = {}
+                        if ("cinder" or "volume") in key.lower() :
+                            dict_test["context"]["quotas"] = {"cinder": quota_cinder}
+                        if "neutron" in key.lower():
+                            dict_test["context"]["quotas"] = {"neutron": quota_neutron}
+                        if ("nova" or "boot" or "instance") in key.lower():
+                            dict_test["context"]["quotas"] = {"nova": quota_nova}
 
                         if "context" in dict_test:
                             if "users" in dict_test["context"]:

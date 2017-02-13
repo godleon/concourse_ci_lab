@@ -5,11 +5,32 @@
 
 ## nova
 
+- NovaServers.boot_and_associate_floating_ip
+> Conflict: Multiple possible networks found, use a Network ID to be more specific.
+
+- NovaServers.boot_and_live_migrate_server
+> Error BadRequest: overcloud-compute-0.localdomain is not on local storage: Block migration can not be used with shared storage.
+
 - NovaKeypair.boot_and_delete_server_with_keypair
 > Error Conflict: Multiple possible networks found, use a Network ID to be more specific.
 
 - NovaSecGroup.boot_and_delete_server_with_secgroups
 > Error Forbidden: Quota exceeded for resources: ['security_group'].
+
+## neutron
+
+- NeutronLoadbalancerV1.create_and_delete_healthmonitors
+> Invalid scenario argument: 'Neutron extension lbaas is not configured'`
+
+- NeutronLoadbalancerV1.create_and_delete_pools
+> Invalid scenario argument: 'Neutron extension lbaas is not configured'`
+
+- NeutronLoadbalancerV1.create_and_delete_vips
+> Invalid scenario argument: 'Neutron extension lbaas is not configured'`
+
+
+
+
 
 
 ```json

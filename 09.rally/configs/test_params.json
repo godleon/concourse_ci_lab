@@ -49,6 +49,9 @@
 
     "NeutronNetworks.list_agents": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
 
+    "NovaServers.boot_and_bounce_server": { "runner": { "type": "constant", "time": 200, "min": 21, "max": 50 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } }, 
+
+
     "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 30 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 40.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
     "NovaServers.boot_and_delete_server": { "runner": { "type": "constant", "time": 200, "min": 21, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 40.0 }, "args": { "flavor": "m1.medium" } }, 
@@ -61,8 +64,6 @@
 
 
     "NovaServers.boot_and_live_migrate_server": { "runner": { "type": "constant", "time": 100, "min": 11, "max": 11 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "args": { "flavor": "m1.medium" } }, 
-
-
 
 
 

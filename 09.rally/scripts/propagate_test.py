@@ -13,7 +13,7 @@ if len(sys.argv) == 1:
     path_params = dirname(cur_path) + '/configs/test_params.json'
     path_upstream_list = cur_path + '/upstream_tests.list'
 elif len(sys.argv) == 2:
-    path_params = cur_path + "/" + sys.argv[1]
+    path_params = cur_path + "/configs/" + sys.argv[1]
     path_upstream_list = cur_path + '/upstream_tests.list'
 else:
     path_params = sys.argv[1]

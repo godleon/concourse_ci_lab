@@ -22,7 +22,8 @@ else:
 # }
 
 quota_cinder = { "gigabytes": -1, "snapshots": -1, "volumes": -1 }
-quota_neutron = {"floatingip": -1, "health_monitor": -1, "network": -1, "pool": -1, "port": -1, "router": -1, "security_group": -1, "security_group_rule": -1, "subnet": -1, "vip": -1}
+# quota_neutron = {"floatingip": -1, "health_monitor": -1, "network": -1, "pool": -1, "port": -1, "router": -1, "security_group": -1, "security_group_rule": -1, "subnet": -1, "vip": -1}
+quota_neutron = {"floatingip": -1, "network": -1, "port": -1, "router": -1, "security_group": -1, "security_group_rule": -1, "subnet": -1}
 quota_nova = {"cores": -1, "fixed_ips": -1, "floating_ips": -1, "injected_file_content_bytes": -1, "injected_file_path_bytes": -1, "injected_files": -1, "instances": -1, "key_pairs": -1, "metadata_items": -1, "ram": -1, "security_group_rules": -1, "security_groups": -1, "server_group_members": -1, "server_groups": -1}
 
 template_env = Environment(autoescape=False, loader=FileSystemLoader(cur_path), trim_blocks=False)

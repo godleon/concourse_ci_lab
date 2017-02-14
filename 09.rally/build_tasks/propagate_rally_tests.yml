@@ -39,7 +39,7 @@ run:
     find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
 
     chmod +x propagate_test.py
-    ./propagate_test.py
+    ./propagate_test.py ${CONF_NAME}
     cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
     cd ${ENTRY_PATH}/propagated_tests
     git config --global user.email "nobody@concourse.ci"

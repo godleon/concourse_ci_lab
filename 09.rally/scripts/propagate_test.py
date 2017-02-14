@@ -74,6 +74,8 @@ with open(path_params, 'r') as f:
                         if "args" in item.keys():
                             if "flavor" in item["args"].keys():
                                 dict_test["args"]["flavor"]["name"] = item["args"]["flavor"]
+                            if "auto_assign_nic" in item["args"].keys():
+                                dict_test["args"]["auto_assign_nic"] = item["args"]["auto_assign_nic"]
 
                         if "runner" in item.keys():
                             if item["runner"]["type"] == "rps":

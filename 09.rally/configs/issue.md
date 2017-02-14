@@ -5,9 +5,6 @@
 
 ## nova
 
-- NovaServers.boot_and_associate_floating_ip
-> Conflict: Multiple possible networks found, use a Network ID to be more specific.
-
 - NovaServers.boot_and_live_migrate_server
 > Error BadRequest: overcloud-compute-0.localdomain is not on local storage: Block migration can not be used with shared storage.
 

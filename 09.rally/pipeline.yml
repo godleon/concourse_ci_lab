@@ -79,9 +79,9 @@ jobs:
           https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
 
           The build had a result. Check it out at:
-          ${CONCOURSE_CI_URL}/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          http://10.5.91.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          ${CONCOURSE_CI_URL}/builds/$BUILD_ID
+          http://10.5.91.254:8080/builds/$BUILD_ID
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver
@@ -113,9 +113,9 @@ jobs:
         icon_emoji: ':robot_face:'
         text: |
           Rally test($(cat git_semver/version)) has failed, please check it out at:
-          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          http://10.5.91.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          http://10.5.18.254:8080/builds/$BUILD_ID
+          http://10.5.91.254:8080/builds/$BUILD_ID
   - put: rally_test
     params: {repository: rally_remain_tests}
   - put: github_page
@@ -139,8 +139,8 @@ jobs:
         icon_emoji: ':robot_face:'
         text: |
           Rally test($(cat git_semver/version)) has failed, please check it out at:
-          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          http://10.5.91.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          http://10.5.18.254:8080/builds/$BUILD_ID
+          http://10.5.91.254:8080/builds/$BUILD_ID
   - put: rally_result
     params: {repository: rally_summary}

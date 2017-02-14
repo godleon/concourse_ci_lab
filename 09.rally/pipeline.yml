@@ -66,6 +66,8 @@ jobs:
     - get: git_semver
       params: {bump: patch}
   - task: propagate_rally_tests
+    params:
+      CONCOURSE_CI_URL: {{CONCOURSE_CI_URL}}
     file: git_osp/09.rally/build_tasks/propagate_rally_tests.yml
     on_success:
       put: slack
@@ -77,9 +79,9 @@ jobs:
           https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
 
           The build had a result. Check it out at:
-          http://10.5.18.254:8080/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          ${CONCOURSE_CI_URL}/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          http://10.5.18.254:8080/builds/$BUILD_ID
+          ${CONCOURSE_CI_URL}/builds/$BUILD_ID
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver

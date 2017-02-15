@@ -67,12 +67,13 @@ jobs:
       params: {bump: patch}
   - task: propagate_rally_tests
     params:
+      CONCOURSE_CI_URL: {{CONCOURSE_CI_URL}}
       CONF_NAME: {{CONF_NAME}}
     file: git_osp/09.rally/build_tasks/propagate_rally_tests.yml
     on_success:
       put: slack
       params:
-        CONCOURSE_CI_URL: {{CONCOURSE_CI_URL}}
+        
         channel: '#ci_message'
         icon_emoji: ':robot_face:'
         text: |
@@ -80,9 +81,9 @@ jobs:
           https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
 
           The build had a result. Check it out at:
-          ${CONCOURSE_CI_URL}/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          $(cat CONCOURSE_CI_URL)/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          ${CONCOURSE_CI_URL}/builds/$BUILD_ID
+          $(cat CONCOURSE_CI_URL)/builds/$BUILD_ID
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver

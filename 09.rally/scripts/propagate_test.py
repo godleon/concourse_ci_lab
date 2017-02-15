@@ -73,12 +73,21 @@ with open(path_params, 'r') as f:
                                 dict_test["args"]["repetitions"] = 1
                             if "block_migration" in dict_test["args"].keys():
                                 dict_test["args"]["block_migration"] = False
+                            if "image_location" in dict_test["args"].keys():
+                                dict_test["args"]["image_location"] = "http://10.5.91.100:8888/cirros-0.3.5-x86_64-disk.img"
+
+                        if "context" in dict_test:
+                            if "images" in dict_test["context"]:
+                                if "image_url" in dict_test["context"]["images"]:
+                                    dict_test["context"]["images"]["image_url"] = "http://10.5.91.100:8888/cirros-0.3.5-x86_64-disk.img"
 
                         if "args" in item.keys():
                             if "flavor" in item["args"].keys():
                                 dict_test["args"]["flavor"]["name"] = item["args"]["flavor"]
                             if "auto_assign_nic" in item["args"].keys():
                                 dict_test["args"]["auto_assign_nic"] = item["args"]["auto_assign_nic"]
+                            if "image_location" in item["args"].keys():
+                                dict_test["args"]["image_location"] = item["args"]["image_location"]
 
                         if "runner" in item.keys():
                             if item["runner"]["type"] == "rps":

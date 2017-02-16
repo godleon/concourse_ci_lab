@@ -88,6 +88,10 @@ with open(path_params, 'r') as f:
                                 dict_test["args"]["auto_assign_nic"] = item["args"]["auto_assign_nic"]
                             if "image_location" in item["args"].keys():
                                 dict_test["args"]["image_location"] = item["args"]["image_location"]
+                            if "min_sleep" in item["args"]:
+                                dict_test["args"]["min_sleep"] = item["args"]["min_sleep"]
+                            if "max_sleep" in item["args"]:
+                                dict_test["args"]["max_sleep"] = item["args"]["max_sleep"]
 
                         if "runner" in item.keys():
                             if item["runner"]["type"] == "rps":
@@ -112,23 +116,22 @@ with open(path_params, 'r') as f:
                                 "max_seconds_per_iteration": item["sla"]["max"]
                             }
 
-                        # if "quotas" in item.keys():
-                        #     dict_test["context"]["quotas"] = item["quotas"]
                         if "context" not in dict_test:
                             dict_test["context"] = {}
-                        if ("cinder" or "volume") in key.lower() :
+                        if ("cinder" in key.lower()) or ("volume" in key.lower()):
                             dict_test["context"]["quotas"] = {"cinder": quota_cinder}
                         if "neutron" in key.lower():
                             dict_test["context"]["quotas"] = {"neutron": quota_neutron}
-                        if ("nova" or "boot" or "instance") in key.lower():
+                        if ("nova" in key.lower()) or ("boot" in key.lower()) or ("instance" in key.lower()):
                             dict_test["context"]["quotas"] = {"nova": quota_nova}
+                        if key == "NovaSecGroup.boot_and_delete_server_with_secgroups":
+                            dict_test["context"]["quotas"] = {"neutron": quota_neutron}
 
-                        if "context" in dict_test:
-                            if "users" in dict_test["context"]:
-                                if "tenants" in dict_test["context"]["users"]:
-                                    dict_test["context"]["users"]["tenants"] = 3
-                                if "users_per_tenant" in dict_test["context"]["users"]:
-                                    dict_test["context"]["users"]["users_per_tenant"] = 5
+                        if "users" in dict_test["context"]:
+                            if "tenants" in dict_test["context"]["users"]:
+                                dict_test["context"]["users"]["tenants"] = 3
+                            if "users_per_tenant" in dict_test["context"]["users"]:
+                                dict_test["context"]["users"]["users_per_tenant"] = 5
 
                         propagated_test[key].append(dict_test)
 

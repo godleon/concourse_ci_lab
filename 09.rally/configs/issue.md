@@ -1,12 +1,9 @@
 ## keystone
 
 - KeystoneBasic.create_and_delete_ec2credential(**create-and-delete-ec2credential.json**)
-> skip ec2
+> 會發生一些 Error, 但測試結果是成功的
 
 ## nova
-
-- NovaServers.boot_and_live_migrate_server
-> Error BadRequest: overcloud-compute-0.localdomain is not on local storage: Block migration can not be used with shared storage.
 
 - NovaKeypair.boot_and_delete_server_with_keypair
 > Error Conflict: Multiple possible networks found, use a Network ID to be more specific.
@@ -16,15 +13,17 @@
 
 ## neutron
 
-- NeutronLoadbalancerV1.create_and_delete_healthmonitors
+- NeutronLoadbalancerV1.create_and_delete_healthmonitors (**create-and-delete-healthmonitors.json**)
 > Invalid scenario argument: 'Neutron extension lbaas is not configured'`
 
-- NeutronLoadbalancerV1.create_and_delete_pools
+- NeutronLoadbalancerV1.create_and_delete_pools (**create-and-delete-pools.json**)
 > Invalid scenario argument: 'Neutron extension lbaas is not configured'`
 
-- NeutronLoadbalancerV1.create_and_delete_vips
+- NeutronLoadbalancerV1.create_and_delete_vips (**create-and-delete-vips.json**)
 > Invalid scenario argument: 'Neutron extension lbaas is not configured'`
 
+- NeutronLoadbalancerV1.create_and_list_pools (**create-and-list-pools.json**)
+> Invalid scenario argument: 'Neutron extension lbaas is not configured'`
 
 
 
@@ -118,3 +117,6 @@ Failed validating 'additionalProperties' in schema:
                              'type': 'object'}},
      'type': 'object'}
 ```
+
+
+

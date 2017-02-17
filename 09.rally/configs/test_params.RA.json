@@ -1,43 +1,43 @@
 {
-    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 40.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 40.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
-    "NovaSecGroup.boot_and_delete_server_with_secgroups": { "runner": { "type": "constant", "time": 100, "min": 3, "max": 50 }, "sla": { "failure_rate": 0, "avg": 180.0, "max": 240.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaSecGroup.boot_and_delete_server_with_secgroups": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 180.0, "max": 240.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
-    "NovaServers.boot_and_delete_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
+    "NovaServers.boot_and_delete_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
-    "NovaServers.boot_and_get_console_output": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_and_get_console_output": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_and_list_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium" } }, 
+    "NovaServers.boot_and_list_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 40.0 }, "args": { "flavor": "m1.medium" } }, 
 
-    "NovaServers.boot_and_live_migrate_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
+    "NovaServers.boot_and_live_migrate_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
-    "NovaServers.boot_and_migrate_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 50.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_and_migrate_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 50.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_and_rebuild_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 50.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_and_rebuild_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 50.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_and_show_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 60.0, "max": 120.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_and_show_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 60.0, "max": 120.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_and_update_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_and_update_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_and_bounce_server": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } }, 
+    "NovaServers.boot_and_bounce_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 150.0, "max": 300.0 }, "args": { "flavor": "m1.medium", "actions": [ {"hard_reboot": 2}, {"soft_reboot": 2}, {"stop_start": 2}, {"rescue_unrescue": 2} ] } }, 
 
-    "NovaServers.boot_server_from_volume_and_delete": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_server_from_volume_and_delete": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_server_from_volume_and_resize": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 150.0, "max": 240.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
+    "NovaServers.boot_server_from_volume_and_resize": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 150.0, "max": 240.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
-    "NovaServers.boot_server_from_volume_snapshot": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_server_from_volume_snapshot": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_server_from_volume": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
+    "NovaServers.boot_server_from_volume": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } },
 
-    "NovaServers.boot_lock_unlock_and_delete": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } },
+    "NovaServers.boot_lock_unlock_and_delete": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } },
 
-    "NovaSecGroup.boot_server_and_add_secgroups": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium", "auto_assign_nic": true } },
+    "NovaSecGroup.boot_server_and_add_secgroups": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 90.0 }, "args": { "flavor": "m1.medium", "auto_assign_nic": true } },
 
-    "NovaServers.boot_server_associate_and_dissociate_floating_ip": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 40.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaServers.boot_server_associate_and_dissociate_floating_ip": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 40.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
-    "NovaServers.boot_server_attach_created_volume_and_live_migrate": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
+    "NovaServers.boot_server_attach_created_volume_and_live_migrate": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
-    "NovaServers.boot_server_attach_created_volume_and_resize": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
+    "NovaServers.boot_server_attach_created_volume_and_resize": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
-    "NovaServers.boot_server_from_volume_and_live_migrate": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }
+    "NovaServers.boot_server_from_volume_and_live_migrate": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }
 }

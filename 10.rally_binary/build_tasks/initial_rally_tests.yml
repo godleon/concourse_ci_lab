@@ -24,5 +24,4 @@ run:
     ENTRY_PATH=$(pwd)
     RESOURCE_VER=$(cat git_semver/version)
     whoami
-    bash git_osp/10.rally_binary/env/all.sh
     env

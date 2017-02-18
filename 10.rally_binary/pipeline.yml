@@ -39,7 +39,7 @@ resources:
   type: slack-notification
   source:
     url: https://hooks.slack.com/services/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
-    
+
 
 jobs:
 
@@ -63,9 +63,9 @@ jobs:
           https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
 
           The build had a result. Check it out at:
-          ${CONCOURSE_CI_URL}/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          $(cat git_osp/10.rally_binary/env_vars/CONCOURSE_CI_URL)/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
           or at: 
-          ${CONCOURSE_CI_URL}/builds/$BUILD_ID
+          $(cat git_osp/10.rally_binary/env_vars/CONCOURSE_CI_URL)/builds/$BUILD_ID
 #  - put: rally_test
 #    params: {repository: propagated_tests}
 #  - put: git_semver

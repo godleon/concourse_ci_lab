@@ -1,0 +1,26 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: rallyforge/rally
+    tag: latest
+
+inputs:
+- name: git_osp
+- name: rally_test
+- name: github_page
+- name: rally_result
+- name: git_semver
+
+#outputs:
+#- name: rally_remain_tests
+#- name: rally_test_output
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    sudo chmod a+x git_osp/10.rally_binary/scripts/run_binary_test.sh
+    ./git_osp/10.rally_binary/scripts/run_binary_test.sh

@@ -69,4 +69,39 @@ jobs:
   - put: rally_test
     params: {repository: propagated_tests}
   - put: git_semver
-    params: {file: git_semver/version}        
+    params: {file: git_semver/version}
+
+
+- name: run_test
+  plan:
+  - aggregate:
+    - get: git_osp
+    - get: rally_test
+    - get: github_page
+    - get: rally_result
+      trigger: true
+    - get: git_semver
+      trigger: true
+      passed: [rally_init]
+  - task: run_test
+    privileged: true
+    params:
+      OS_AUTH_URL: {{OS_AUTH_URL}}
+      OS_USERNAME: {{OS_USERNAME}}
+      OS_PASSWORD: {{OS_PASSWORD}}
+      OS_TENANT_NAME: {{OS_TENANT_NAME}}
+    file: git_osp/10.rally_binary/build_tasks/run_binary_test.yml
+    on_failure:
+      put: slack
+      params:
+        channel: '#ci_message'
+        icon_emoji: ':robot_face:'
+        text: |
+          Rally test($(cat git_semver/version)) has failed, please check it out at:
+          $(cat git_osp/10.rally_binary/env_vars/CONCOURSE_CI_URL)/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at: 
+          $(cat git_osp/10.rally_binary/env_vars/CONCOURSE_CI_URL)/builds/$BUILD_ID
+#  - put: rally_test
+#    params: {repository: rally_remain_tests}
+#  - put: github_page
+#    params: {repository: rally_test_output}

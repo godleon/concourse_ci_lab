@@ -1,0 +1,28 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: python
+    tag: "3.6"
+    # repository: ubuntu
+    # tag: xenial
+
+inputs:
+- name: git_osp
+- name: git_semver
+- name: rally_test
+
+outputs:
+- name: propagated_tests
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    ENTRY_PATH=$(pwd)
+    RESOURCE_VER=$(cat git_semver/version)
+    whoami
+    source git_osp/10.rally_binary/env/all.env
+    env

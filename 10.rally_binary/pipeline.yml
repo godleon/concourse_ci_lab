@@ -1,0 +1,57 @@
+resources:
+
+- name: git_osp
+  type: git
+  check_every: 30s
+  source:
+    uri: {{git-uri_osp}}
+    branch: master
+    private_key: {{git-private-key}}
+
+- name: rally_test
+  type: git
+  check_every: 30s
+  source:
+    uri: {{git-uri_test-result}}
+    branch: rally_test
+    private_key: {{git-private-key}}
+
+- name: git_semver
+  type: semver
+  source:
+    driver: git
+    initial_version: 0.0.1
+    uri: {{git-uri_test-result}}
+    branch: version
+    file: version
+    private_key: {{git-private-key}}
+
+jobs:
+
+- name: rally_init
+  plan:
+  - aggregate:
+    - get: git_osp
+      trigger: true
+    - get: rally_test
+    - get: git_semver
+      params: {bump: patch}
+  - task: initial_rally_tests
+    file: git_osp/10.rally_binary/build_tasks/initial_rally_tests.yml
+    on_success:
+      put: slack
+      params:
+        channel: '#ci_message'
+        icon_emoji: ':robot_face:'
+        text: |
+          Rally is running now, you can check the progress from the following summary link:
+          https://github.com/godleon/osp_test_results/tree/rally_result/$(cat git_semver/version)
+
+          The build had a result. Check it out at:
+          ${CONCOURSE_CI_URL}/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+          or at: 
+          ${CONCOURSE_CI_URL}/builds/$BUILD_ID
+#  - put: rally_test
+#    params: {repository: propagated_tests}
+#  - put: git_semver
+#    params: {file: git_semver/version}        

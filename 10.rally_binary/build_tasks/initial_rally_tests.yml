@@ -25,3 +25,25 @@ run:
     RESOURCE_VER=$(cat git_semver/version)
     whoami
     env
+
+    apt-get update >/dev/null
+    apt-get -y install git python3 python3-jinja2 >/dev/null
+
+    git clone rally_test propagated_tests
+    rm -rf propagated_tests/*
+    echo "brach for being rally test queue - version ${RESOURCE_VER}" | tee propagated_tests/README.md
+
+    cd git_osp/10.rally_binary/scripts
+    mkdir -p propagated_tests/test_list
+    git clone https://github.com/openstack/rally.git
+    find rally/samples/tasks/scenarios/ -type f -name '*.json' | egrep 'rally/samples/tasks/scenarios/(authenticate|cinder|glance|keystone|neutron|nova|quotas|requests|swift)' > upstream_tests.list
+
+    #chmod +x propagate_test.py
+    #./propagate_test.py
+    cp git_osp/10.rally_binary/configs/keystone.json propagated_tests/test_list/
+    cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
+    cd ${ENTRY_PATH}/propagated_tests
+    git config --global user.email "nobody@concourse.ci"
+    git config --global user.name "Concourse"
+    git add .
+    git commit -m "Rally propagated tests(Binary!) - version ${RESOURCE_VER}"

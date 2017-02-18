@@ -11,6 +11,23 @@
 - NovaSecGroup.boot_and_delete_server_with_secgroups
 > Error Forbidden: Quota exceeded for resources: ['security_group'].
 
+
+- NovaServers.boot_and_get_console_output
+> 跑多一點 workload 就會出現 **No valid host was found. There are not enough hosts available.**
+
+- NovaServers.boot_and_show_server 
+> 跑多一點 workload 就會出現 **No valid host was found. There are not enough hosts available.**
+
+- NovaServers.boot_and_update_server
+> 跑多一點 workload 就會出現 **No valid host was found. There are not enough hosts available.**
+
+- NovaServers.boot_server_from_volume
+> 跑多一點 workload 就會出現 **No valid host was found. There are not enough hosts available.**
+
+NovaServers.boot_server_associate_and_dissociate_floating_ip 
+> 跑多一點 workload 就會出現 **No more IP addresses available on network**
+
+
 ## neutron
 
 - NeutronLoadbalancerV1.create_and_delete_healthmonitors (**create-and-delete-healthmonitors.json**)

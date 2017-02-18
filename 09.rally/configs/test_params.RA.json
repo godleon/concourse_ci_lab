@@ -1,5 +1,5 @@
 {
-    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "rps", "time": 300, "min": 0.2, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "rps", "time": 250, "min": 0.2, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
     "NovaSecGroup.boot_and_delete_server_with_secgroups": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 180.0, "max": 240.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 

@@ -25,6 +25,22 @@ resources:
     branch: rally_test
     private_key: {{git-private-key}}
 
+- name: github_page
+  type: git
+  check_every: 30s
+  source:
+    uri: {{git-uri_test-result}}
+    branch: gh-pages
+    private_key: {{git-private-key}}
+
+- name: rally_result
+  type: git
+  check_every: 30s
+  source:
+    uri: {{git-uri_test-result}}
+    branch: rally_result
+    private_key: {{git-private-key}}
+
 - name: git_semver
   type: semver
   source:

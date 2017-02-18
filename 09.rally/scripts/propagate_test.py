@@ -34,14 +34,20 @@ def generate_test(test_tmpl, paras, concurrency):
 
     if "args" in dict_test:
         # 僅測試一次
-        if "repetitions" in dict_test["args"].keys():
+        if "repetitions" in dict_test["args"]:
             dict_test["args"]["repetitions"] = 1
         # shared storage 必須把 block migration 設定為 false
-        if "block_migration" in dict_test["args"].keys():
+        if "block_migration" in dict_test["args"]:
             dict_test["args"]["block_migration"] = False
         # 調整測試用的 image 位置
-        if "image_location" in dict_test["args"].keys():
+        if "image_location" in dict_test["args"]:
             dict_test["args"]["image_location"] = "http://10.5.91.100:8888/cirros-0.3.5-x86_64-disk.img"
+        # 避免太多 security group & rule
+        if "security_group_count" in dict_test["args"]:
+            dict_test["args"]["security_group_count"] = 1
+        if "rules_per_security_group" in dict_test["args"]:
+            dict_test["args"]["rules_per_security_group"] = 2
+
 
         # For 特定的 cinder scenario
         if "context" in dict_test:

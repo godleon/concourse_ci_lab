@@ -1,3 +1,5 @@
 {
-    "Authenticate.keystone": { "runner": { "type": "constant", "time": 100, "min": 10 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }
+    "Authenticate.keystone": { "runner": { "type": "constant", "time": 200, "min": 10 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+
+    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 200, "min": 5 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }
 }

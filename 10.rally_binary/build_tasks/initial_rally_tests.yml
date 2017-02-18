@@ -40,7 +40,7 @@ run:
 
     #chmod +x propagate_test.py
     #./propagate_test.py
-    cp git_osp/10.rally_binary/configs/keystone.json propagated_tests/test_list/
+    cp ${ENTRY_PATH}/git_osp/10.rally_binary/configs/keystone.json propagated_tests/test_list/
     cp -r propagated_tests/* ${ENTRY_PATH}/propagated_tests/
     cd ${ENTRY_PATH}/propagated_tests
     git config --global user.email "nobody@concourse.ci"

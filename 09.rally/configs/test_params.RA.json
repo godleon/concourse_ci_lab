@@ -45,13 +45,13 @@
 
     "NovaAggregates.create_aggregate_add_and_remove_host": { "runner": { "type": "constant", "time": 500, "min": 81, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaAggregates.create_and_delete_aggregate": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaAggregates.create_and_delete_aggregate": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaFlavors.create_and_delete_flavor": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaFlavors.create_and_delete_flavor": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaKeypair.create_and_delete_keypair": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaKeypair.create_and_delete_keypair": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaAggregates.create_and_get_aggregate_details": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaAggregates.create_and_get_aggregate_details": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
     "NovaFlavors.create_and_get_flavor": { "runner": { "type": "constant", "time": 500, "min": 51, "max": 51 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
@@ -59,41 +59,41 @@
 
     "NovaFlavors.create_and_list_flavor_access": { "runner": { "type": "constant", "time": 500, "min": 51, "max": 51 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaKeypair.create_and_list_keypairs": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaKeypair.create_and_list_keypairs": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaServerGroups.create_and_list_server_groups": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaServerGroups.create_and_list_server_groups": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaAggregates.create_and_update_aggregate": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaAggregates.create_and_update_aggregate": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaSecGroup.create_and_update_secgroups": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaSecGroup.create_and_update_secgroups": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaFlavors.create_flavor_and_add_tenant_access": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaFlavors.create_flavor_and_add_tenant_access": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaFlavors.create_flavor_and_set_keys": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaFlavors.create_flavor_and_set_keys": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaFlavors.create_flavor": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaFlavors.create_flavor": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaAggregates.list_aggregates": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaAggregates.list_aggregates": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaHypervisors.list_and_get_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaHypervisors.list_and_get_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
     "NovaHypervisors.list_and_get_uptime_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 2.0 } }, 
 
-    "NovaHypervisors.list_and_search_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaHypervisors.list_and_search_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaAvailabilityZones.list_availability_zones": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaAvailabilityZones.list_availability_zones": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaFlavors.list_flavors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaFlavors.list_flavors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaHosts.list_hosts": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaHosts.list_hosts": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaHypervisors.list_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaHypervisors.list_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaImages.list_images": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaImages.list_images": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaServers.list_servers": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaServers.list_servers": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
-    "NovaServices.list_services": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaServices.list_services": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
     "NovaServers.pause_and_unpause_server": { "runner": { "type": "rps", "time": 300, "min": 1.0, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 60.0 }, "args": { "flavor": "m1.medium" } }, 
 
@@ -101,7 +101,7 @@
 
     "NovaServers.resize_shutoff_server": { "runner": { "type": "rps", "time": 300, "min": 1.0, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 180.0 }, "args": { "flavor": "m1.medium" } }, 
 
-    "NovaHypervisors.statistics_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "NovaHypervisors.statistics_hypervisors": { "runner": { "type": "constant", "time": 500, "min": 100, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
 
     "NovaServers.suspend_and_resume_server": { "runner": { "type": "rps", "time": 300, "min": 1.0, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 60.0, "max": 90.0 }, "args": { "flavor": "m1.medium" } }
 }

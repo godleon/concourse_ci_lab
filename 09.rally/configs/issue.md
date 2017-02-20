@@ -24,8 +24,24 @@
 - NovaServers.boot_server_from_volume
 > 跑多一點 workload 就會出現 **No valid host was found. There are not enough hosts available.**
 
-NovaServers.boot_server_associate_and_dissociate_floating_ip 
+- NovaServers.boot_server_associate_and_dissociate_floating_ip 
 > 跑多一點 workload 就會出現 **No more IP addresses available on network**
+
+- NovaAggregates.create_aggregate_add_host_and_boot_server (**create-aggregate-add-host-and-boot-server.json**)
+> RallyException: Instance host and aggregate host are different
+
+- NovaNetworks.create_and_delete_network (**create-and-delete-network.json**)
+> Invalid scenario argument: ''nova-network' service is not available. Hint: If 'nova-network' service has non-default service_type, try to setup it via 'api_versions' context.'`
+
+- NovaNetworks.create_and_list_networks (**create-and-list-networks.json**)
+> Invalid scenario argument: ''nova-network' service is not available. Hint: If 'nova-network' service has non-default service_type, try to setup it via 'api_versions' context.'`
+
+- NovaHosts.list_and_get_hosts (**list-and-get-hosts.json**)
+> NotFound: Compute host overcloud-controller-1.localdomain could not be found.
+
+- NovaServers.shelve_and_unshelve_server (shelve-and-unshelve.json)
+> 壞掉的機率很高
+
 
 
 ## neutron
@@ -137,3 +153,9 @@ Failed validating 'additionalProperties' in schema:
 
 
 
+表現異常
+======
+
+- NovaServers.boot_server (**boot.json**)
+
+- 

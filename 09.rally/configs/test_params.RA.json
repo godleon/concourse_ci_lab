@@ -1,5 +1,5 @@
 {
-    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "rps", "time": 100, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaServers.boot_and_associate_floating_ip": { "runner": { "type": "rps", "time": 90, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
     "NovaServers.boot_and_live_migrate_server": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 90.0, "max": 150.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 
@@ -33,7 +33,7 @@
 
     "NovaSecGroup.boot_server_and_add_secgroups": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 }, "args": { "flavor": "m1.medium", "auto_assign_nic": true } },
 
-    "NovaServers.boot_server_associate_and_dissociate_floating_ip": { "runner": { "type": "rps", "time": 100, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
+    "NovaServers.boot_server_associate_and_dissociate_floating_ip": { "runner": { "type": "rps", "time": 90, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 } , "args": { "flavor": "m1.medium", "auto_assign_nic": true }},
 
     "NovaServers.boot_server_attach_created_volume_and_live_migrate": { "runner": { "type": "rps", "time": 300, "min": 0.5, "max": 3.0 }, "sla": { "failure_rate": 0, "avg": 120.0, "max": 240.0 }, "args": { "flavor": "m1.medium", "min_sleep": 10, "max_sleep": 30 } }, 
 

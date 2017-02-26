@@ -40,11 +40,11 @@ def generate_test(test_tmpl, paras, concurrency):
         if "block_migration" in dict_test["args"]:
             dict_test["args"]["block_migration"] = False
         # 把 image 從 cirros 改為 Ubuntu
-        if "image" in dict_test["args"]:
-            dict_test["args"]["image"]["name"] = "ubuntu-1604-amd64.img"
-        if "from_image" in dict_test["args"]:
-            dict_test["args"]["from_image"]["name"] = "ubuntu-1604-amd64.img"
-            dict_test["args"]["to_image"]["name"] = "ubuntu-1604-amd64.img"
+        # if "image" in dict_test["args"]:
+        #     dict_test["args"]["image"]["name"] = "ubuntu-1604-amd64.img"
+        # if "from_image" in dict_test["args"]:
+        #     dict_test["args"]["from_image"]["name"] = "ubuntu-1604-amd64.img"
+        #     dict_test["args"]["to_image"]["name"] = "ubuntu-1604-amd64.img"
         # 調整測試用的 image 位置
         if "image_location" in dict_test["args"]:
             dict_test["args"]["image_location"] = "http://10.5.91.100:8888/cirros-0.3.5-x86_64-disk.img"

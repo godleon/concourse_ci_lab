@@ -1,127 +1,127 @@
 {
-    "Authenticate.keystone": { "runner": { "type": "constant", "time": 500, "min": 151, "max": 200 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "Authenticate.keystone": { "runner": { "type": "constant", "time": 5000, "min": 151, "max": 200 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
 
-    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 500, "min": 141, "max": 180 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
+    "Authenticate.validate_cinder": { "runner": { "type": "constant", "time": 5000, "min": 141, "max": 180 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
     
-    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 500, "min": 71, "max": 120 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
+    "Authenticate.validate_glance": { "runner": { "type": "constant", "time": 5000, "min": 71, "max": 120 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
     
-    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 500, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
+    "Authenticate.validate_heat": { "runner": { "type": "constant", "time": 5000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
 
-    "Authenticate.validate_neutron": { "runner": { "type": "constant", "time": 500, "min": 91, "max": 140 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
+    "Authenticate.validate_neutron": { "runner": { "type": "constant", "time": 5000, "min": 91, "max": 140 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
 
-    "Authenticate.validate_nova": { "runner": { "type": "constant", "time": 500, "min": 91, "max": 140 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
-    
-
-
-    "CinderVolumes.create_and_accept_transfer": { "runner": { "type": "constant", "time": 200, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } } },
-
-    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 200, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } }, "args": { "min_sleep": 5, "max_sleep": 15 } },
-
-    "CinderVolumes.create_and_delete_snapshot": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } }, "args": { "min_sleep": 5, "max_sleep": 15 } },
-
-    "CinderVolumeTypes.create_and_delete_volume_type": { "runner": { "type": "constant", "time": 500, "min": 121, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "CinderVolumes.create_and_list_snapshots": { "runner": { "type": "constant", "time": 200, "min": 21, "max": 60 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+    "Authenticate.validate_nova": { "runner": { "type": "constant", "time": 5000, "min": 91, "max": 140 }, "sla": { "failure_rate": 0, "avg": 1.5, "max": 3.0 } },
     
 
 
-    "GlanceImages.create_and_delete_image": { "runner": { "type": "constant", "time": 100, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+    "CinderVolumes.create_and_accept_transfer": { "runner": { "type": "constant", "time": 2000, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } } },
 
-    "GlanceImages.create_and_list_image": { "runner": { "type": "constant", "time": 100, "min": 15, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+    "CinderVolumes.create_and_delete_volume": { "runner": { "type": "constant", "time": 2000, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } }, "args": { "min_sleep": 5, "max_sleep": 15 } },
 
-    "GlanceImages.create_image_and_boot_instances": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 }, "quotas": { "nova": { "instances": -1 } } },
+    "CinderVolumes.create_and_delete_snapshot": { "runner": { "type": "constant", "time": 2000, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 30.0, "max": 45.0 }, "quotas": { "cinder": { "volumes": -1 } }, "args": { "min_sleep": 5, "max_sleep": 15 } },
 
-    "GlanceImages.list_images": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 70 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+    "CinderVolumeTypes.create_and_delete_volume_type": { "runner": { "type": "constant", "time": 5000, "min": 121, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
 
-
-
-    "KeystoneBasic.add_and_remove_user_role": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.authenticate_user_and_validate_token": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_add_and_list_user_roles": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
-
-    "KeystoneBasic.create_and_delete_ec2credential": { "runner": { "type": "constant", "time": 200, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_delete_role": { "runner": { "type": "constant", "time": 200, "min": 71, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_delete_service": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max":5.0 } },
-
-    "KeystoneBasic.create_delete_user": { "runner": { "type": "constant", "time": 200, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_get_role": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_list_ec2credentials": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_list_roles": { "runner": { "type": "constant", "time": 200, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_list_services": { "runner": { "type": "constant", "time": 200, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_list_tenants": { "runner": { "type": "constant", "time": 200, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_list_users": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 80 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_and_update_user": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
-
-    "KeystoneBasic.create_tenant_with_users": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
-
-    "KeystoneBasic.create_tenant": { "runner": { "type": "constant", "time": 200, "min": 91, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.create_update_and_delete_tenant": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
-
-    "KeystoneBasic.create_user_set_enabled_and_delete": { "runner": { "type": "constant", "time": 200, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
-
-    "KeystoneBasic.create_user_update_password": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 80 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "KeystoneBasic.get_entities": { "runner": { "type": "constant", "time": 200, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
-
-
-    "NeutronNetworks.create_and_delete_floating_ips": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_delete_networks": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_delete_ports": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 50.0 } },
-
-    "NeutronNetworks.create_and_delete_routers": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
-
-    "NeutronSecurityGroup.create_and_delete_security_groups": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "NeutronNetworks.create_and_delete_subnets": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 } },
-
-    "NeutronNetworks.create_and_list_floating_ips": { "runner": { "type": "constant", "time": 200, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_list_networks": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_list_ports": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 50.0 } },
-
-    "NeutronNetworks.create_and_list_routers": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
-
-    "NeutronSecurityGroup.create_and_list_security_groups": { "runner": { "type": "constant", "time": 100, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "NeutronNetworks.create_and_list_subnets": { "runner": { "type": "constant", "time": 100, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 } },
-
-    "NeutronNetworks.create_and_show_network": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_update_networks": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
-
-    "NeutronNetworks.create_and_update_ports": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 25.0, "max": 50.0 } },
-
-    "NeutronNetworks.create_and_update_routers": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
-
-    "NeutronSecurityGroup.create_and_update_security_groups": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-    "NeutronNetworks.create_and_update_subnets": { "runner": { "type": "constant", "time": 200, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 20.0 } },
-
-    "NeutronNetworks.list_agents": { "runner": { "type": "constant", "time": 200, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
-
-
-    "SwiftObjects.create_container_and_object_then_delete_all": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "CinderVolumes.create_and_list_snapshots": { "runner": { "type": "constant", "time": 2000, "min": 21, "max": 60 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
     
-    "SwiftObjects.create_container_and_object_then_download_object": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+
+
+    "GlanceImages.create_and_delete_image": { "runner": { "type": "constant", "time": 1000, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "GlanceImages.create_and_list_image": { "runner": { "type": "constant", "time": 1000, "min": 15, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "GlanceImages.create_image_and_boot_instances": { "runner": { "type": "constant", "time": 1000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 45.0, "max": 60.0 }, "quotas": { "nova": { "instances": -1 } } },
+
+    "GlanceImages.list_images": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 70 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+
+
+    "KeystoneBasic.add_and_remove_user_role": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.authenticate_user_and_validate_token": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_add_and_list_user_roles": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
+
+    "KeystoneBasic.create_and_delete_ec2credential": { "runner": { "type": "constant", "time": 2000, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_delete_role": { "runner": { "type": "constant", "time": 2000, "min": 71, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_delete_service": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max":5.0 } },
+
+    "KeystoneBasic.create_delete_user": { "runner": { "type": "constant", "time": 2000, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_get_role": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_list_ec2credentials": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_list_roles": { "runner": { "type": "constant", "time": 2000, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_list_services": { "runner": { "type": "constant", "time": 2000, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_list_tenants": { "runner": { "type": "constant", "time": 2000, "min": 81, "max": 120 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_list_users": { "runner": { "type": "constant", "time": 2000, "min": 31, "max": 80 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_and_update_user": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
+
+    "KeystoneBasic.create_tenant_with_users": { "runner": { "type": "constant", "time": 2000, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "KeystoneBasic.create_tenant": { "runner": { "type": "constant", "time": 2000, "min": 91, "max": 130 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.create_update_and_delete_tenant": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
+
+    "KeystoneBasic.create_user_set_enabled_and_delete": { "runner": { "type": "constant", "time": 2000, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 6.0, "max": 9.0 } },
+
+    "KeystoneBasic.create_user_update_password": { "runner": { "type": "constant", "time": 2000, "min": 31, "max": 80 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "KeystoneBasic.get_entities": { "runner": { "type": "constant", "time": 2000, "min": 61, "max": 100 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+
+    "NeutronNetworks.create_and_delete_floating_ips": { "runner": { "type": "constant", "time": 2000, "min": 31, "max": 60 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
+
+    "NeutronNetworks.create_and_delete_networks": { "runner": { "type": "constant", "time": 2000, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_delete_ports": { "runner": { "type": "constant", "time": 2000, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronNetworks.create_and_delete_routers": { "runner": { "type": "constant", "time": 2000, "min": 15, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronSecurityGroup.create_and_delete_security_groups": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_delete_subnets": { "runner": { "type": "constant", "time": 2000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 10.0, "max": 15.0 } },
+
+    "NeutronNetworks.create_and_list_floating_ips": { "runner": { "type": "constant", "time": 90, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_list_networks": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_list_ports": { "runner": { "type": "constant", "time": 1000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronNetworks.create_and_list_routers": { "runner": { "type": "constant", "time": 1000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronSecurityGroup.create_and_list_security_groups": { "runner": { "type": "constant", "time": 1000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_list_subnets": { "runner": { "type": "constant", "time": 1000, "min": 31, "max": 70 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_show_network": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_update_networks": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_update_ports": { "runner": { "type": "constant", "time": 2000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronNetworks.create_and_update_routers": { "runner": { "type": "constant", "time": 2000, "min": 5, "max": 50 }, "sla": { "failure_rate": 0, "avg": 20.0, "max": 30.0 } },
+
+    "NeutronSecurityGroup.create_and_update_security_groups": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.create_and_update_subnets": { "runner": { "type": "constant", "time": 2000, "min": 11, "max": 50 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+    "NeutronNetworks.list_agents": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } },
+
+
+    "SwiftObjects.create_container_and_object_then_delete_all": { "runner": { "type": "constant", "time": 2000, "min": 41, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
     
-    "SwiftObjects.create_container_and_object_then_list_objects": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "SwiftObjects.create_container_and_object_then_download_object": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
     
-    "SwiftObjects.list_and_download_objects_in_containers": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    "SwiftObjects.create_container_and_object_then_list_objects": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
     
-    "SwiftObjects.list_objects_in_containers": { "runner": { "type": "constant", "time": 200, "min": 31, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }
+    "SwiftObjects.list_and_download_objects_in_containers": { "runner": { "type": "constant", "time": 2000, "min": 51, "max": 100 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }, 
+    
+    "SwiftObjects.list_objects_in_containers": { "runner": { "type": "constant", "time": 2000, "min": 101, "max": 150 }, "sla": { "failure_rate": 0, "avg": 3.0, "max": 5.0 } }
 }
